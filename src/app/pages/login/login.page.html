@@ -1,0 +1,39 @@
+
+
+
+<ion-content>
+
+  <ion-row>
+      <ion-col>
+        <ion-img style="height: auto; max-width: 200vh; padding: 33px 27px 0px 25px" src="/assets/Logo.svg" ></ion-img>
+      </ion-col>
+  </ion-row>
+
+  <ion-list class="inputs" inset="true">
+    <ion-item class="primero" >
+      <ion-input required  autocomplete="on" autofocus="true" class="ion-text-center" placeholder="Email" inputmode="email" pattern="email"></ion-input>
+    </ion-item>
+  
+    <ion-item class="segundo" >
+      <ion-input required  autocomplete="on" class="ion-text-center" placeholder="Contraseña" type="password"></ion-input>
+    </ion-item>    
+  </ion-list>
+  
+  <ion-button padding Expand="block" Fill="solid" routerLink="/tabs/home">Inicia Sesión</ion-button>
+   
+  <ion-button padding Expand="block" Fill="clear" class="FgButton">¿Olvidaste tu contraseña?</ion-button>
+
+  <ion-list>
+      <ion-item-divider mode="md" ></ion-item-divider>
+  </ion-list>
+
+  <ion-button class="FbButton" padding Expand="block" Fill="solid" color="secondary" >Inicia sesión con Facebook</ion-button>
+
+  <ion-list>
+    <ion-item-divider mode="md"></ion-item-divider>
+  </ion-list>
+
+  <h5 class="ion-text-center" >¿No tienes cuenta?</h5> 
+  <ion-button class="RgButton" padding Expand="block" Fill="solid" color="tertiary" routerLink="/registro">Registrate</ion-button>
+
+</ion-content>

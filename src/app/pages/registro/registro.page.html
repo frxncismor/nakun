@@ -1,0 +1,67 @@
+
+
+
+<ion-content>
+
+  <ion-row>
+      <ion-col>
+        <ion-img style="height: auto; max-width: 200vh; padding: 33px 27px 0px 25px" src="/assets/Logo.svg" ></ion-img>
+      </ion-col>
+  </ion-row>
+
+  <ion-list class="inputs" inset="true">
+    <ion-item class="nombre" >
+      <ion-input required autocomplete="on" autofocus="true" text-capitalize class="ion-text-center" placeholder="Nombre"></ion-input>
+    </ion-item>
+  
+    <ion-item class="email" >
+      <ion-input required autocomplete="on" text-capitalize class="ion-text-center" placeholder="Apellido" ></ion-input>
+    </ion-item>    
+
+    <ion-item class="email" >
+      <ion-input required  autocomplete="on" class="ion-text-center" placeholder="E-mail" inputmode="email" pattern="email" ></ion-input>
+    </ion-item>    
+
+    <ion-item class="password" >
+      <ion-input required autocomplete="on" class="ion-text-center" placeholder="Contraseña" type="password" ></ion-input>
+    </ion-item>   
+    
+    <ion-item>
+        <ion-label >Fecha de nacimiento</ion-label>
+        <ion-datetime  placeholder="Seleccionar"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-segment color="secondary" (ionChange)="seleccionSexo($event)">
+
+          <ion-segment-button value="hombre">
+            <ion-label>Hombre</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button value="mujer">
+            <ion-label>Mujer</ion-label>
+          </ion-segment-button>
+
+      </ion-segment>
+    </ion-item>
+      
+  </ion-list>
+  
+   
+   
+  
+
+  <ion-button class="RgButton" padding Expand="block" Fill="solid" color="tertiary" routerLink="/tabs/home">Registrate</ion-button>
+
+  <ion-button class="FbButton" padding Expand="block" Fill="solid" color="secondary"  >Registrate con Facebook</ion-button> 
+
+  <ion-list>
+      <ion-item-divider mode="md" ></ion-item-divider>
+  </ion-list>
+
+
+ 
+  <ion-button padding Expand="block" Fill="solid" routerLink="/login" >Ya tengo cuenta</ion-button>
+  
+
+</ion-content>
