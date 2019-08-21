@@ -25,6 +25,16 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.s-ion-icon{
-  color: blue;
+
+.tabs-md .tab-button-plane[aria-selected=true] .tab-button-icon-plane {
+  color: rgb(0, 0, 0) !important;
+}
+.tabs-md .tab-button-home[aria-selected=true] .tab-button-icon-home {
+  color: rgb(0, 0, 0) !important;
+}
+.tabs-md .tab-button-notif[aria-selected=true] .tab-button-icon-notif {
+  color: rgb(0, 0, 0) !important;
+}
+.tabs-md .tab-button-chat[aria-selected=true] .tab-button-icon-chat {
+  color: rgb(0, 0, 0) !important;
 }

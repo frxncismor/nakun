@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },
   { path: 'notificaciones', loadChildren: './pages/notificaciones/notificaciones.module#NotificacionesPageModule' },
   { path: 'plane', loadChildren: './pages/plane/plane.module#PlanePageModule' },
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule'}
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule'},
+  { path: 'destacado', loadChildren: './pages/destacado/destacado.module#DestacadoPageModule' }
   // { path: '**', redirectTo: 'login'},
   
 ];

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Routes } from '@angular/router';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,9 @@ import { Routes } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  
-  constructor() { }
+ 
+
+  constructor(private router: Router, private navCtrl: NavController) { }
 
   ngOnInit() {
   }
