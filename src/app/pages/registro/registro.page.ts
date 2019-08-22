@@ -34,14 +34,21 @@ export class RegistroPage implements OnInit {
           console.log('Fecha de nacimiento: ' + evento.day.value + ' ' + evento.month.value + ' ' + evento.year.value);
 
         }
-      }]
-    };
+      },
+        {
+          text: 'Log',
+          handler: () => {
+            console.log('Clicked Log. Do not Dismiss.');
+            // return false;
+          }
+        }]
+      };
   }
 
   cambioFecha( event ) {
     console.log('ionChange', event);
     console.log('Date', new Date(event.detail.value)); // convertir fecha a javascript
-    // this.fechaNaci = new Date(event.detail.value);
+    this.fechaNaci = new Date(event.detail.value);
   }
 
   Registrar() {

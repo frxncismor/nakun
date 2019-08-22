@@ -30,7 +30,7 @@
       
       <ion-item>
           <ion-label >Fecha de nacimiento</ion-label>
-          <ion-datetime placeholder="Seleccionar"  [pickerOptions]="customPickerOptions" display-format="DD MMMM YY" cancelText="Cancelar" [ngModel]="fechaNaci.toISOString()" name="diaNaci" (ionChange)="cambioFecha( $event )"></ion-datetime>
+          <ion-datetime placeholder="Seleccionar"   display-format="DD MMMM YY" cancelText="Cancelar" [ngModel]="fechaNaci.toISOString()" name="diaNaci" (ionChange)="cambioFecha( $event )"></ion-datetime>
       </ion-item>
   
       <ion-item>
