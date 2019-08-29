@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,14 @@ export class LoginPage implements OnInit {
     password: ''
   };
 
-  constructor() { }
+  constructor(private menuCtrl: MenuController) { }
 
   ngOnInit() {
+    this.ionViewWillEnter();
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
   Login() {

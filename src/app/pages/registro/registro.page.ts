@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -11,44 +12,38 @@ export class RegistroPage implements OnInit {
   customPickerOptions;
   sexo: any;
   birthday: any;
-  diaNaci: Date = new Date();
+
+  // diaNaci: Date = new Date();
 
   registro = {
     nombre: '',
     apellido: '',
     email: '',
     password: '',
-    fechaNaci : new Date(),
+    fechaNaci : {
+      day: '',
+      month: '',
+      year: ''
+    },
     sexo: ''
   };
 
-  constructor() { }
+  constructor(private menuCtrl: MenuController) { }
 
   ngOnInit() {
-    this.customPickerOptions = {
-      buttons: [{
-        text: 'Listo',
-        handler: (evento) => {
-          console.log('Listo');
-          console.log(evento);
-          console.log('Fecha de nacimiento: ' + evento.day.value + ' ' + evento.month.value + ' ' + evento.year.value);
+    this.ionViewWillEnter();
 
-        }
-      },
-        {
-          text: 'Log',
-          handler: () => {
-            console.log('Clicked Log. Do not Dismiss.');
-            // return false;
-          }
-        }]
-      };
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
   cambioFecha( event ) {
-    console.log('ionChange', event);
-    console.log('Date', new Date(event.detail.value)); // convertir fecha a javascript
     this.fechaNaci = new Date(event.detail.value);
+    this.registro.fechaNaci.day = this.fechaNaci.getDate();
+    this.registro.fechaNaci.month = this.fechaNaci.getMonth();
+    this.registro.fechaNaci.year = this.fechaNaci.getFullYear();
   }
 
   Registrar() {

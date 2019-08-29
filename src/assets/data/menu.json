@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Comunidad",
+    "icon": "/assets/comunidad.svg",
+    "redirectTo": "/comunidad"
+  },
+  {
+    "name": "Blog",
+    "icon": "/assets/blog.svg",
+    "redirectTo": "/blog"
+  }
+]

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.page.html',
-  styleUrls: ['./tabs.page.scss'],
+  selector: 'app-configuracion',
+  templateUrl: './configuracion.page.html',
+  styleUrls: ['./configuracion.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class ConfiguracionPage implements OnInit {
 
   constructor(private menuCtrl: MenuController) { }
 
@@ -15,7 +15,7 @@ export class TabsPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.menuCtrl.enable(true);
+    this.menuCtrl.enable(false);
   }
 
 }
