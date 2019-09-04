@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { ChatPage } from './chat.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -16,12 +17,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ComponentsModule
+    ComponentsModule,
+    
   ],
   declarations: [ChatPage]
 })

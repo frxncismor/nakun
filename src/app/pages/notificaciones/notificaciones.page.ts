@@ -12,4 +12,11 @@ export class NotificacionesPage implements OnInit {
   ngOnInit() {
   }
 
+  Opciones() {
+    console.log('Abrir opciones');
+  }
+
+  abrirPerfil() {
+    console.log('Abrir perfil de notificaciones');
+  }
 }

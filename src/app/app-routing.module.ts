@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/tabs/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'tabs', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule' },
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
@@ -16,7 +16,9 @@ const routes: Routes = [
   { path: 'comunidad', loadChildren: './pages/comunidad/comunidad.module#ComunidadPageModule' },
   { path: 'blog', loadChildren: './pages/blog/blog.module#BlogPageModule' },
   { path: 'configuracion', loadChildren: './pages/configuracion/configuracion.module#ConfiguracionPageModule' },
-  { path: 'soporte-tecnico', loadChildren: './pages/soporte-tecnico/soporte-tecnico.module#SoporteTecnicoPageModule' }
+  { path: 'soporte-tecnico', loadChildren: './pages/soporte-tecnico/soporte-tecnico.module#SoporteTecnicoPageModule' },
+
+
   // { path: '**', redirectTo: 'login'},
   
 ];

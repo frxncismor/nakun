@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+      
+        <ion-buttons slot="start">
+            <ion-back-button text="" (click)="closeChat()"  color="secondary" defaultHref="/tabs/chat"></ion-back-button>
+         </ion-buttons>
+  
+         <ion-buttons slot="start" >
+            <ion-button (click)="abrirPerfil()">
+                <ion-avatar padding mode="md">
+                    <img src="/assets/spider-man.jpg"  alt="">
+                </ion-avatar>   
+            </ion-button>
+          </ion-buttons>
+         
+      
+      <ion-title text-capitalize >{{name}}</ion-title>
+
+      <ion-buttons slot="end">
+          <ion-button (click)="opciones()">
+            <ion-icon color="secondary"  slot="icon-only" name="more"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding >
+    
+  
+    <div>
+      <ion-card color="light" class="mensajeRecibido">
+        <ion-card-content  class="textoMensajeRecibido">
+            ¡Hola Stan!
+        </ion-card-content>
+      </ion-card>
+    </div>
+    
+    <div>
+      <ion-card color="secondary"   class="mensajeEnviado">
+        <ion-card-content class="ion-text-left">
+            ¡Hola Spider-Man!
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </ion-content>
+  
+  <ion-footer color="textArea" mode="md">
+   <ion-item >
+     <ion-textarea cols="10" mode="ios"  padding></ion-textarea>
+     <ion-buttons slot="end">
+       
+       <ion-button (click)="enviar()">
+         <ion-icon style="color: #4598CD;" name="md-send"></ion-icon>
+       </ion-button>
+      
+     </ion-buttons>
+   </ion-item>
+  </ion-footer>
+  

@@ -5,19 +5,23 @@ import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { Header2Component } from './header2/header2.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
 @NgModule({
+  entryComponents: [ChatComponent],
   declarations: [
     HeaderComponent,
     MenuComponent,
-    Header2Component
+    Header2Component,
+    ChatComponent
   ],
   exports: [
     HeaderComponent,
     MenuComponent,
-    Header2Component
+    Header2Component,
+    ChatComponent
   ],
   imports: [
     CommonModule,

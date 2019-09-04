@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Spider Man",
+    "img": "/assets/spider-man.jpg",
+    "state": "/assets/entregado.svg",
+    "lastMessage": "¡Hola Spider-Man! ",
+    "time": "9:15 am"
+
+  },
+  {
+    "name": "Wolverine",
+    "img": "/assets/wolverine.jpg",
+    "state": "/assets/Leído.svg" ,
+    "lastMessage": "¿Cómo estás Wolverine?",
+    "time": "9:15 am"
+  },
+  {
+    "name": "Capitan America",
+    "img": "/assets/captain.jpg",
+    "state": "/assets/enviado.svg" ,
+    "lastMessage": "Gracias por tu trabajo ",
+    "time": "9:15 am"
+  },
+  {
+    "name": "Deadpool",
+    "img": "/assets/deadpool.jpg",
+    "state": "/assets/recibido.svg" ,
+    "lastMessage": "¡Hola viejito! ",
+    "time": "9:15 am"
+  }
+]

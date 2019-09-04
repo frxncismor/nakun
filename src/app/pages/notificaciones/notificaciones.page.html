@@ -4,11 +4,18 @@
 
   <ion-list >
       <ion-item *ngFor="let item of [1,1]">
-        <ion-avatar>
+        <ion-avatar (click)="abrirPerfil()">
           <img src="/assets/spider-man.jpg" />
         </ion-avatar>
         <ion-label padding><h3 style="font-weight: bold;">Spider Man</h3><h5>Recordatorio</h5><p>Tu siguiente consulta es en 3 horas</p></ion-label>
         <ion-icon slot="start" src="/assets/notificacion.svg"></ion-icon>
+
+        <ion-buttons >
+          <ion-button (click)="Opciones()">
+            <ion-icon slot="icon-only" name="more" style="color: #525456;"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
         </ion-item>
   </ion-list>
   <ion-list >

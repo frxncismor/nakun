@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Componente } from '../interfaces/interfaces';
+import { Componente, Contacto } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,7 @@ export class ServiceService {
     return this.http.get<Componente[]>('/assets/data/menu.json');
   }
 
-  
+  getContacts() {
+    return this.http.get<Contacto[]>('/assets/data/contactos.json');
+  }
 }
