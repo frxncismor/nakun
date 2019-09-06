@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Notificaciones } from '../../interfaces/interfaces';
+import { Observable } from 'rxjs';
+import { ServiceService } from '../../services/service.service';
 
 @Component({
   selector: 'app-notificaciones',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificacionesPage implements OnInit {
 
-  constructor() { }
+  notificaciones: Observable<Notificaciones[]>;
+  constructor(private dataService: ServiceService) { }
 
   ngOnInit() {
+    this.notificaciones = this.dataService.getNotifications();
   }
 
   Opciones() {

@@ -76,9 +76,9 @@
   --ion-color-light-tint: #f5f6f9;
   
   // recibido
-  --ion-color-recibido: #E3EDAA ;
+  --ion-color-recibido: rgba(240, 227, 84, 0.123);
   --ion-color-recibido-rgb: 0,128,255;
-  --ion-color-recibido-contrast: #ffffff;
+  --ion-color-recibido-contrast: #000000;
   --ion-color-recibido-contrast-rgb: 255,255,255;
   --ion-color-recibido-shade: #0071e0;
   --ion-color-recibido-tint: #20282f;
@@ -90,6 +90,22 @@
   --ion-color-textArea-contrast-rgb: 255, 255, 255;
   --ion-color-textArea-shade: #0bb8cc;
   --ion-color-textArea-tint: #24d6ea;
+
+  /** darkInvertido **/
+  --ion-color-darkInvertido: #FFFFFF;
+  --ion-color-darkInvertido-rgb: 34, 34, 34;
+  --ion-color-darkInvertido-contrast: #222428;
+  --ion-color-darkInvertido-contrast-rgb: 255, 255, 255;
+  --ion-color-darkInvertido-shade: #C8C7CC;
+  --ion-color-darkInvertido-tint: #383a3e;
+
+  /** dangerInvertido **/
+  --ion-color-dangerInvertido: #ffffff;
+  --ion-color-dangerInvertido-rgb: 245, 61, 61;
+  --ion-color-dangerInvertido-contrast: #f04141;
+  --ion-color-dangerInvertido-contrast-rgb: 255, 255, 255;
+  --ion-color-dangerInvertido-shade: #d33939;
+  --ion-color-dangerInvertido-tint: #f25454;
 }
 
 .ion-color-recibido {
@@ -107,4 +123,20 @@
   --ion-color-contrast-rgb: var(--ion-color-textArea-contrast-rgb) !important;
   --ion-color-shade: var(--ion-color-textArea-shade) !important;
   --ion-color-tint: var(--ion-color-textArea-tint) !important;
+}
+.ion-color-darkInvertido {
+  --ion-color-base: var(--ion-color-darkInvertido) !important;
+  --ion-color-base-rgb: var(--ion-color-darkInvertido-rgb) !important;
+  --ion-color-contrast: var(--ion-color-darkInvertido-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-darkInvertido-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-darkInvertido-shade) !important;
+  --ion-color-tint: var(--ion-color-darkInvertido-tint) !important;
+}
+.ion-color-dangerInvertido {
+  --ion-color-base: var(--ion-color-dangerInvertido) !important;
+  --ion-color-base-rgb: var(--ion-color-dangerInvertido-rgb) !important;
+  --ion-color-contrast: var(--ion-color-dangerInvertido-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-dangerInvertido-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-dangerInvertido-shade) !important;
+  --ion-color-tint: var(--ion-color-dangerInvertido-tint) !important;
 }

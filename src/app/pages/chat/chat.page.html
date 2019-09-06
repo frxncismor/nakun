@@ -4,16 +4,51 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-list #lista>
 
-    <ion-item (click)="abrirChat()" *ngFor="let c of contactos | async">
-      <ion-avatar>
-        <img [src]="c.img" />
-      </ion-avatar>
-      <ion-label padding><h3 style="font-weight: bold;">{{c.name}}</h3><h5><strong *ngIf="c.name != 'Deadpool'" >Tu: </strong> {{c.lastMessage}} - {{c.time}}</h5></ion-label>
-      <ion-icon slot="end" [src]="c.state"></ion-icon>
-    </ion-item>
+    
+      <ion-item-sliding  *ngFor="let c of contactos | async">
+      
+        <ion-item (click)="abrirChat()" lines="none"  [color]="c.color">
 
+          <ion-avatar slot="start">
+            <img [src]="c.img" />
+          </ion-avatar>
+    
+          <ion-label>
+            <h3 style="font-weight: bold;" >{{c.name}}</h3>
+            
+            <h5 *ngIf="c.state != 'recibido'"><strong  >Tu: </strong> {{c.lastMessage}} - {{c.time}}</h5>
+            <h5 *ngIf="c.state == 'recibido'" style="font-weight: bold;">{{c.lastMessage}} - {{c.time}}</h5>
+          </ion-label>
+
+
+          <ion-icon slot="end" src="/assets/recibido.svg" *ngIf="c.state == 'recibido'"></ion-icon>
+          <ion-icon slot="end" src="/assets/entregado.svg" *ngIf="c.state == 'entregado'"></ion-icon>
+          <ion-icon slot="end" src="/assets/enviado.svg" *ngIf="c.state == 'enviado'"></ion-icon>
+          <ion-icon slot="end" src="/assets/Leído.svg" *ngIf="c.state == 'leido'"></ion-icon>
+          
+        </ion-item>
+
+    
+
+        <ion-item-options side="end">
+            <ion-item-option (click)="menu()" color="darkInvertido">
+              <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-item-option>
+    
+            <ion-item-option (click)="delete()" color="dangerInvertido">
+              <ion-icon slot="icon-only" name ="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+    
+         
+        
+      </ion-item-sliding>
+    
+    
+
+  
     <!-- <ion-item>
       <ion-avatar>
         <img src="/assets/deadpool.jpg" />

@@ -10,4 +10,14 @@ export interface Contacto {
   state: string;
   lastMessage: string;
   time: string;
+  color?: string;
+}
+
+export interface Notificaciones {
+  name: string;
+  subtitle: string;
+  description: string;
+  state: string;
+  img: string;
+  color?: string;
 }
