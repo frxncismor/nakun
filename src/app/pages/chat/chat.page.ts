@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, IonList } from '@ionic/angular';
 import { ChatComponent } from '../../components/chat/chat.component';
-import { Observable } from 'rxjs';
-import { Contacto } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
+import { Contacto } from '../../interfaces/interfaces';
 
 
 @Component({
@@ -15,35 +14,46 @@ export class ChatPage implements OnInit {
 
   @ViewChild('lista', {static: false}) lista: IonList;
 
-  contactos: Observable<Contacto[]>;
+
+  textoBuscar = '';
+  contactos: any [] = [];
 
   constructor( private modalCtrl: ModalController, private dataService: ServiceService) { }
 
   ngOnInit() {
-    this.contactos = this.dataService.getContacts();
+     this.dataService.getContacts().subscribe( contactos => {
+      console.log(contactos);
+      this.contactos = contactos;
+    });
   }
 
-  abrirChat() {
-    // const modal = await
+  abrirChat(Contacto) {
+
     this.modalCtrl.create({
     component: ChatComponent,
-    componentProps: { 
-      contacto: this.dataService.getContacts.name,
-      // name: this.dataService.getContacts.arguments.name,
-      // img: this.contactos.,
+    componentProps: {
+      chat: Contacto,
     }
     }).then( (modal) => modal.present());
 
-    // await modal.present();
 
   }
-  delete() {
+  delete(contacto) {
     console.log('borrar');
+    const index = this.contactos.indexOf(contacto);
+
+    if (index > -1) {
+      this.contactos.splice(index, 1);
+      }
     // this.lista.closeSlidingItems();
   }
 
   menu(user) {
     console.log('menu');
     // this.lista.closeSlidingItems();
+  }
+
+  buscar(event) {
+    this.textoBuscar = event.detail.value;
   }
 }

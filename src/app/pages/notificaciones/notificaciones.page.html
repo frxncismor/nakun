@@ -6,18 +6,23 @@
     <ion-list-header>
       <ion-label class="encabezado">Nuevas</ion-label>
     </ion-list-header>
-      <ion-item *ngFor="let n of notificaciones | async"  lines="none" [color]="n.color">
+      <ion-item *ngFor="let notificacion of notificaciones"  lines="none" [color]="notificacion.color">
 
         <ion-avatar (click)="abrirPerfil()">
-          <img [src]="n.img" />
+          <img [src]="notificacion.img" />
         </ion-avatar>
 
-        <ion-label padding><h3 style="font-weight: bold;">{{n.name}}</h3><h5>{{n.subtitle}}</h5><p>{{n.description}}</p></ion-label>
-        <ion-icon slot="start" src="/assets/notificacion.svg" *ngIf="n.state == 'recibido'"></ion-icon>
-        <ion-icon slot="start" src="/assets/notificacion-leida.svg" *ngIf="n.state == 'leido'"></ion-icon>
+        <ion-label padding>
+          <h3 style="font-weight: bold;">{{notificacion.name}}</h3>
+          <h5>{{notificacion.subtitle}}</h5>
+          <p>{{notificacion.description}}</p>
+        </ion-label>
 
-        <ion-buttons >
-          <ion-button (click)="Opciones()">
+        <ion-icon slot="start" src="/assets/notificacion.svg" *ngIf="notificacion.state == 'recibido'"></ion-icon>
+        <ion-icon slot="start" src="/assets/notificacion-leida.svg" *ngIf="notificacion.state == 'leido'"></ion-icon>
+
+        <ion-buttons>
+          <ion-button (click)="Opciones(notificacion)">
             <ion-icon slot="icon-only" name="more" style="color: #525456;"></ion-icon>
           </ion-button>
         </ion-buttons>

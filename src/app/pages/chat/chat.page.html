@@ -1,43 +1,43 @@
 <app-header titulo="chat"></app-header>
 
-<ion-searchbar placeholder="Buscar" (ionChange)="buscar($event)" animated></ion-searchbar>
+<ion-searchbar placeholder="Buscar" (ionChange)="buscar($event)" animated debounce="500"></ion-searchbar>
 
 <ion-content>
 
   <ion-list #lista>
 
     
-      <ion-item-sliding  *ngFor="let c of contactos | async">
+      <ion-item-sliding  *ngFor="let contacto of contactos | filtro: textoBuscar" >
       
-        <ion-item (click)="abrirChat()" lines="none"  [color]="c.color">
+        <ion-item (click)="abrirChat(contacto)" lines="none"  [color]="contacto.state" >
 
           <ion-avatar slot="start">
-            <img [src]="c.img" />
+            <img [src]="contacto.img" />
           </ion-avatar>
     
           <ion-label>
-            <h3 style="font-weight: bold;" >{{c.name}}</h3>
+            <h3 style="font-weight: bold;" >{{contacto.name}}</h3>
             
-            <h5 *ngIf="c.state != 'recibido'"><strong  >Tu: </strong> {{c.lastMessage}} - {{c.time}}</h5>
-            <h5 *ngIf="c.state == 'recibido'" style="font-weight: bold;">{{c.lastMessage}} - {{c.time}}</h5>
+            <h5 *ngIf="contacto.state != 'recibido'"><strong  >Tu: </strong> {{contacto.lastMessage}} - {{contacto.time}}</h5>
+            <h5 *ngIf="contacto.state == 'recibido'" style="font-weight: bold;">{{contacto.lastMessage}} - {{contacto.time}}</h5>
           </ion-label>
 
 
-          <ion-icon slot="end" src="/assets/recibido.svg" *ngIf="c.state == 'recibido'"></ion-icon>
-          <ion-icon slot="end" src="/assets/entregado.svg" *ngIf="c.state == 'entregado'"></ion-icon>
-          <ion-icon slot="end" src="/assets/enviado.svg" *ngIf="c.state == 'enviado'"></ion-icon>
-          <ion-icon slot="end" src="/assets/Leído.svg" *ngIf="c.state == 'leido'"></ion-icon>
+          <ion-icon slot="end" src="/assets/recibido.svg" *ngIf="contacto.state == 'recibido'"></ion-icon>
+          <ion-icon slot="end" src="/assets/entregado.svg" *ngIf="contacto.state == 'entregado'"></ion-icon>
+          <ion-icon slot="end" src="/assets/enviado.svg" *ngIf="contacto.state == 'enviado'"></ion-icon>
+          <ion-icon slot="end" src="/assets/Leído.svg" *ngIf="contacto.state == 'leido'"></ion-icon>
           
         </ion-item>
 
     
 
         <ion-item-options side="end">
-            <ion-item-option (click)="menu()" color="darkInvertido">
+            <!-- <ion-item-option (click)="menu()" color="darkInvertido">
               <ion-icon slot="icon-only" name="menu"></ion-icon>
-            </ion-item-option>
+            </ion-item-option> -->
     
-            <ion-item-option (click)="delete()" color="dangerInvertido">
+            <ion-item-option (click)="delete(contacto)" color="dangerInvertido">
               <ion-icon slot="icon-only" name ="trash"></ion-icon>
             </ion-item-option>
           </ion-item-options>

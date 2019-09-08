@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Notificaciones } from '../../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { ServiceService } from '../../services/service.service';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-notificaciones',
@@ -10,18 +11,42 @@ import { ServiceService } from '../../services/service.service';
 })
 export class NotificacionesPage implements OnInit {
 
-  notificaciones: Observable<Notificaciones[]>;
-  constructor(private dataService: ServiceService) { }
+  notificaciones: any [] = [];
+  constructor(private dataService: ServiceService, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {
-    this.notificaciones = this.dataService.getNotifications();
+    this.dataService.getNotifications().subscribe( notificaciones => {
+      console.log(notificaciones);
+      this.notificaciones = notificaciones;
+    });
   }
 
-  Opciones() {
-    console.log('Abrir opciones');
-  }
 
   abrirPerfil() {
     console.log('Abrir perfil de notificaciones');
   }
+
+   async Opciones(notificacion) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Opciones',
+      backdropDismiss: true, //no se cierra el action sheet tocando en otra parte de la pantalla
+      buttons: [{
+        text: 'Delete',
+        role: 'destructive',
+        icon: 'trash',
+        cssClass: 'rojo',
+        handler: () => {
+          const index = this.notificaciones.indexOf(notificacion);
+
+          if (index > -1) {
+            this.notificaciones.splice(index, 1);
+            }
+        }
+      }]
+    });
+
+    await actionSheet.present();
+  
+  }
+  
 }

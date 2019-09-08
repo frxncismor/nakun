@@ -17,26 +17,18 @@
 
 
 <ion-content padding>
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
-  <ion-card mode="ios" *ngFor="let c of [1,1,1,1,1]">
-    <ion-img src="/assets/montain.jpg"></ion-img>
-    <ion-card-header mode="ios">
-      <ion-card-subtitle>Autor</ion-card-subtitle>
-      <ion-card-title>Encabezado del post</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
 
-    <ion-item color="secondary">
-        <ion-label>Categoria</ion-label>
-        <ion-chip color="light">
-            <ion-icon name="heart" color="primary"></ion-icon>
-            <ion-label>Salud</ion-label>
-        </ion-chip>
-    </ion-item>
+  <app-destacados [destacados]="destacados"></app-destacados>  
+  
+  <app-profesionales [profesionales]="profesionales"></app-profesionales>
+  
+  <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
 

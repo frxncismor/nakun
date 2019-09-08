@@ -1,0 +1,14 @@
+<ion-card mode="ios" >
+    <ion-img [src]="profesional.img"  *ngIf="profesional.img" ></ion-img>
+    <ion-card-header mode="ios">
+      <ion-card-subtitle>{{profesional.address.pais}}</ion-card-subtitle>
+      <ion-card-title>{{profesional.name}}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+     <p>{{profesional.address.direccion}}, {{profesional.address.numero}}, {{profesional.address.colonia}}</p>
+   
+     
+    </ion-card-content>
+    
+</ion-card>

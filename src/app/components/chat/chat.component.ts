@@ -11,14 +11,18 @@ import { ServiceService } from '../../services/service.service';
 })
 export class ChatComponent implements OnInit {
 
-  @Input() name;
-  nombre: any;
+  public chat: any;
+  public chatRoom: any;
 
   constructor( private modalCtrl: ModalController, private dataService: ServiceService, private navParams: NavParams) { }
 
   ngOnInit() {
-    this.navParams.get('contacto');
-    console.log('Esto es un chat que no funciona :`c');
+    this.dataService.getContacts().subscribe( chatroom => {
+      console.log(chatroom);
+      this.chatRoom = chatroom;
+    });
+
+    this.chat = this.navParams.get('contactos');
 
   }
 
