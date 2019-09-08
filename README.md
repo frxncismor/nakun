@@ -23,6 +23,6 @@ Requisitos para correr la aplicación:
 4. Corre el comando npm install
 5. Corre el comando ionic serve
 
-¿Cómo ser contruibuidor? (Poder hacer git push y git pull)
+¿Cómo ser contribuidor? (Poder hacer git push y git pull)
 Toda la información está en este link:
 https://gist.github.com/BCasal/026e4c7f5c71418485c1
