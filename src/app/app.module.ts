@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 
@@ -32,6 +33,7 @@ import { PipesModule } from './pipes/pipes.module';
   providers: [
     StatusBar,
     SplashScreen,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

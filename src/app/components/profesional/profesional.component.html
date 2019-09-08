@@ -1,14 +1,41 @@
 <ion-card mode="ios" >
-    <ion-img [src]="profesional.img"  *ngIf="profesional.img" ></ion-img>
-    <ion-card-header mode="ios">
-      <ion-card-subtitle>{{profesional.address.pais}}</ion-card-subtitle>
-      <ion-card-title>{{profesional.name}}</ion-card-title>
-    </ion-card-header>
+  
+
+  <ion-card-header>
+    <ion-card-subtitle>
+
+     <div class="avatar-start">
+        <ion-avatar >
+          <img [src]="profesional.img" />
+        </ion-avatar>
+     </div>
+
+      <span class="text-primary">{{profesional.name}}</span><br>
+      <span class="profesional-profesion-name">{{profesional.profesion}}</span><br>
+      <span class="rate-icon"><ion-icon slot="icon-only" src="/assets/rate.svg"></ion-icon></span>
+      <span class="rate">{{profesional.puntuacion}}</span>
+      
+
+        <div class="mensaje-profesional">
+          <ion-button (click)="mensaje()" fill="clear" color="secondary">
+            <ion-icon slot="icon-only" name="md-text"></ion-icon>
+          </ion-button>
+        </div>
+
+    </ion-card-subtitle>
     
-    <ion-card-content>
-     <p>{{profesional.address.direccion}}, {{profesional.address.numero}}, {{profesional.address.colonia}}</p>
-   
+      <span class="profesional-profesion-description">{{profesional.description}}</span><br>
+      <span class="profesional-profesion-address"> {{profesional.address.colonia}}, {{profesional.address.direccion}} #{{profesional.address.numero}}</span><br>
+      <span class="profesional-profesion-city"> {{profesional.address.ciudad}}, {{profesional.address.estado}}. </span><br>
+    
+  </ion-card-header>
+  
+    
+  <ion-card-content>
+    
+    
+   <ion-img src="/assets/map.jpg"></ion-img>
      
-    </ion-card-content>
+  </ion-card-content>
     
 </ion-card>

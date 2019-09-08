@@ -1,18 +1,18 @@
 <ion-card mode="ios" >
-    <ion-img [src]="noticia.urlToImage"  *ngIf="noticia.urlToImage" ></ion-img>
+    <ion-img [src]="noticia.urlToImage"  *ngIf="noticia.urlToImage"  (click)="abrirNoticia()" ></ion-img>
     <ion-card-header mode="ios">
       <ion-card-subtitle>{{noticia.source.name}}</ion-card-subtitle>
-      <ion-card-title>{{noticia.title}}</ion-card-title>
+      <ion-card-title (click)="abrirNoticia()">{{noticia.title}}</ion-card-title>
     </ion-card-header>
     
     <ion-card-content>
      {{noticia.description}}
     </ion-card-content>
     
-    <ion-item color="secondary">
+    <ion-item color="primary">
         <ion-label>Categoria</ion-label>
         <ion-chip color="light">
-          <ion-icon name="heart" color="primary"></ion-icon>
+          <ion-icon name="heart" color="light"></ion-icon>
           <ion-label>Salud</ion-label>
         </ion-chip>
     </ion-item>

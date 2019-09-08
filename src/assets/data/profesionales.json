@@ -7,6 +7,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno en el area de la terapia",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -23,6 +24,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -38,6 +40,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -54,6 +57,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -70,6 +74,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -86,6 +91,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -102,6 +108,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -118,6 +125,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -134,6 +142,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",
@@ -150,6 +159,7 @@
       "img" : "/assets/psicologo.jpg",
       "profesion" : "Terapeuta",
       "puntuacion" : "4.7" ,
+      "description": "Soy muy bueno",
       "address" : 
        {
         "direccion" : "Rosario Castellanos",

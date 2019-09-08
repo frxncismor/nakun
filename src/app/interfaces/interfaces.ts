@@ -66,6 +66,7 @@ export interface Profesional {
   profesion: string;
   puntuacion: number;
   address: Address;
+  description: string;
 }
 
 export interface Address {
