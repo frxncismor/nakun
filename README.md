@@ -16,9 +16,13 @@ Requisitos para correr la aplicación:
 
 
 
-¿Cómo instalar el repositorio?
+¿Cómo instalar el repositorio? (Solo ejecutar la aplicación)
 1. Descarga el ZIP
 2. Extrae el zip en una carpeta de tu preferencia
 3. Navega hasta la carpeta que extrajiste desde la terminal
 4. Corre el comando npm install
 5. Corre el comando ionic serve
+
+¿Cómo ser contruibuidor? (Poder hacer git push y git pull)
+Toda la información está en este link:
+https://gist.github.com/BCasal/026e4c7f5c71418485c1
