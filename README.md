@@ -1,7 +1,7 @@
 # Nákun
 Aplicación para la atención de la salud mental
 
-#Requisitos para correr la aplicación:
+Requisitos para correr la aplicación:
 1. Instalar Node.js (versión actual) 
   https://nodejs.org/es/
   
@@ -16,7 +16,7 @@ Aplicación para la atención de la salud mental
 
 
 
-#¿Cómo instalar el repositorio?
+¿Cómo instalar el repositorio?
 1. Descarga el ZIP
 2. Extrae el zip en una carpeta de tu preferencia
 3. Navega hasta la carpeta que extrajiste desde la terminal
