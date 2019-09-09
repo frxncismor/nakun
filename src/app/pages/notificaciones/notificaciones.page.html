@@ -6,7 +6,7 @@
     <ion-list-header>
       <ion-label class="encabezado">Nuevas</ion-label>
     </ion-list-header>
-      <ion-item *ngFor="let notificacion of notificaciones"  lines="none" [color]="notificacion.color">
+      <ion-item *ngFor="let notificacion of notificaciones" lines="none" [color]="notificacion.color">
 
         <ion-avatar (click)="abrirPerfil()">
           <img [src]="notificacion.img" />
@@ -18,8 +18,12 @@
           <p>{{notificacion.description}}</p>
         </ion-label>
 
-        <ion-icon slot="start" src="/assets/notificacion.svg" *ngIf="notificacion.state == 'recibido'"></ion-icon>
-        <ion-icon slot="start" src="/assets/notificacion-leida.svg" *ngIf="notificacion.state == 'leido'"></ion-icon>
+        <!-- <ion-icon slot="start" src="/assets/notificacion.svg" *ngIf="notificacion.state == 'recibido'"></ion-icon> -->
+        <div class="icono">
+            <ion-icon slot="icon-only" src="/assets/notificacion.svg" *ngIf="notificacion.state == 'recibido'"></ion-icon>
+            <ion-icon slot="icon-only" src="/assets/notificacion-leida.svg" *ngIf="notificacion.state == 'leido'"></ion-icon>
+        </div>
+       
 
         <ion-buttons>
           <ion-button (click)="Opciones(notificacion)">
