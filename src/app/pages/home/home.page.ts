@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
     console.log(event);
     setTimeout(() => {
       if (this.segment.value === 'destacado') {
-        if ( this.destacados.length) {
+        if (this.destacados.length) {
           event.target.complete();
           this.infiniteScroll.disabled = true;
           return;
@@ -56,7 +56,20 @@ export class HomePage implements OnInit {
         }
       }
     }, 1000);
+  }
 
+  doRefresh(event) {
+    setTimeout(() => {
+      if (this.segment.value === 'destacado') {
+        if (this.destacados.length) {
+          event.target.complete();
+        }
+      } else {
+        if (this.profesionales.length) {
+          event.target.complete();
+        }
+      }
+    }, 1000);
   }
 
   cargarProfesionales(event?) {
@@ -70,7 +83,7 @@ export class HomePage implements OnInit {
 
       this.profesionales.push( ...resp.profesionals);
 
-      if ( event) {
+      if (event) {
         event.target.complete();
       }
 
@@ -94,14 +107,4 @@ export class HomePage implements OnInit {
    });
   }
 
-  doRefresh(event) {
-    setTimeout(() => {
-      if (this.segment.value === 'destacado') {
-        this.cargarDestacados();
-      } else {
-        this.cargarProfesionales();
-      }
-      event.target.complete();
-    }, 1500);
-  }
 }

@@ -8,10 +8,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
+  progreso = 0.5*10;
   constructor(private menuCtrl: MenuController) { }
 
   ngOnInit() {
     this.ionViewWillEnter();
+    
   }
 
   ionViewWillEnter() {

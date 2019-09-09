@@ -14,24 +14,91 @@
     <!-- <ion-title text-capitalize  style="font-size: 15pt; font-weight: bold; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Stan Lee</ion-title> -->
 
     <ion-item lines="none">
-      <ion-avatar  mode="md" (click)="onClick()" slot="start">
+      <ion-avatar  mode="md" (click)="cambiarFoto()" slot="start">
         <img src="/assets/stan-lee.jpg" alt="">
       </ion-avatar>
 
-      <ion-label style="font-size: 15pt !important; padding-left: 30%;" >Stan Lee</ion-label>       
+      <ion-label style="font-size: 15pt !important; padding-left: 30%;" (click)="cambiarNombre()">Stan Lee</ion-label>       
         
     </ion-item>
 
+
+    <ion-grid fixed>
+      <ion-row>
+
+        <ion-col size="6">
+          <ion-card>
+            <ion-card-content text-center>
+              20
+              <ion-card-subtitle style="text-transform: capitalize; font-weight: bold;" >Edad</ion-card-subtitle>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="6">
+            <ion-card>
+              <ion-card-content text-center>
+                Hombre
+                <ion-card-subtitle style="text-transform: capitalize; font-weight: bold;">Sexo</ion-card-subtitle>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+       
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          
+          <ion-card>
+            <ion-card-content text-center>
+                stan@lee.com
+                <ion-card-subtitle style="text-transform: capitalize; font-weight: bold;">Correo electronico</ion-card-subtitle>
+              </ion-card-content>
+          </ion-card>
+    
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- <ion-item>
+      <ion-label position="floating">Edad</ion-label>
+    </ion-item>
+
     <ion-item>
+      <ion-label>20</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Correo electronico</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Edad</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Edad</ion-label>
+    </ion-item>
+     -->
+    <ion-item lines="none">
       <ion-label>Nivel</ion-label>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Comunidades creadas</ion-label>
+    <ion-item lines="none">
+      <ion-progress-bar [value]="progreso" color="secondary"></ion-progress-bar>
+      <ion-badge color="secondary">{{progreso}}</ion-badge>
     </ion-item>
+    
+  
+    <!-- <ion-item lines="none">
+      <ion-label>Correo electronico</ion-label>
+      <ion-label slot="end" text-right>stan@lee.com</ion-label>
+      <!-- <ion-input type="text" placeholder="stan@lee.com" disabled></ion-input> -->
+    <!-- </ion-item> --> 
 
-    <ion-item>
-      <ion-label> </ion-label>
-    </ion-item>
+    <ion-button (click)="onClick()" fill="clear" expand="full" color="secondary">
+      Cambiar contraseña
+    </ion-button>
+
+
    
 </ion-content>
