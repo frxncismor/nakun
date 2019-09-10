@@ -5,7 +5,7 @@
     <ion-card-subtitle>
 
      <div class="avatar-start">
-        <ion-avatar >
+        <ion-avatar (click)="abrirPerfil()">
           <img [src]="profesional.img" />
         </ion-avatar>
      </div>
@@ -17,7 +17,7 @@
       
 
         <div class="mensaje-profesional">
-          <ion-button (click)="mensaje()" fill="clear" color="secondary">
+          <ion-button (click)="mensaje()" fill="clear" color="secondary" mode="ios">
             <ion-icon slot="icon-only" name="md-text"></ion-icon>
           </ion-button>
         </div>

@@ -36,7 +36,6 @@ export class ChatPage implements OnInit {
     }
     }).then( (modal) => modal.present());
 
-
   }
   delete(contacto) {
     console.log('borrar');

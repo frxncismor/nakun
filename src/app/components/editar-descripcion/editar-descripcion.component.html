@@ -1,0 +1,37 @@
+<ion-header no-border>
+    <ion-toolbar>
+      
+        <!-- <ion-buttons slot="end">
+          <ion-button (click)="closeEditarDescripcion()" mode="ios" color="secondary">
+            <ion-icon slot="end" name="close"></ion-icon>
+          </ion-button>
+         </ion-buttons> -->
+  
+         
+      <ion-title>Descripción</ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="guardar()" color="secondary">
+          Guardar
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="start">
+        <ion-button (click)="cancelar()" color="secondary">
+          Cancelar
+        </ion-button>
+      </ion-buttons>
+  
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    
+    <ion-textarea placeholder="Soy una persona muy creativa pero me cuesta lidiar con mis emociones"></ion-textarea>
+
+  </ion-content>
+
+  <ion-footer no-border>
+
+  </ion-footer>

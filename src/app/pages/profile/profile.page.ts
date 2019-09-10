@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
+import { EditarDescripcionComponent } from '../../components/editar-descripcion/editar-descripcion.component';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +10,7 @@ import { MenuController } from '@ionic/angular';
 export class ProfilePage implements OnInit {
 
   progreso = 0.5*10;
-  constructor(private menuCtrl: MenuController) { }
+  constructor(private menuCtrl: MenuController, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -18,6 +19,17 @@ export class ProfilePage implements OnInit {
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
+  }
+
+  async cambiarDescripcion() {
+    const editarDescripcion = await this.modalCtrl.create({
+      component: EditarDescripcionComponent,
+      componentProps: {
+        value: 123
+      },
+      cssClass: 'editarDescripcion'
+    });
+    return await editarDescripcion.present();
   }
 
 }

@@ -10,12 +10,13 @@ import { DestacadosComponent } from './destacados/destacados.component';
 import { NoticiaComponent } from './noticia/noticia.component';
 import { ProfesionalComponent } from './profesional/profesional.component';
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
+import { EditarDescripcionComponent } from './editar-descripcion/editar-descripcion.component';
 
 
 
 
 @NgModule({
-  entryComponents: [ChatComponent],
+  entryComponents: [ChatComponent, EditarDescripcionComponent],
   declarations: [
     HeaderComponent,
     MenuComponent,
@@ -24,7 +25,8 @@ import { ProfesionalesComponent } from './profesionales/profesionales.component'
     DestacadosComponent,
     NoticiaComponent,
     ProfesionalComponent,
-    ProfesionalesComponent
+    ProfesionalesComponent,
+    EditarDescripcionComponent
   ],
   exports: [
     HeaderComponent,
@@ -32,7 +34,8 @@ import { ProfesionalesComponent } from './profesionales/profesionales.component'
     Header2Component,
     ChatComponent,
     DestacadosComponent,
-    ProfesionalesComponent
+    ProfesionalesComponent,
+    EditarDescripcionComponent
   ],
   imports: [
     CommonModule,

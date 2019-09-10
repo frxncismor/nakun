@@ -1,0 +1,86 @@
+.editarDireccion{
+  color: var(--ion-color-secondary); 
+  font-size: 24px !important;
+}
+.editarColonia{
+  color: var(--ion-color-primary); 
+  font-size: 24px !important;
+}
+.editarCiudad{
+  color: var(--ion-color-tertiary); 
+  font-size: 24px !important;
+}
+.editarPais{
+  color: var(--ion-color-danger); 
+  font-size: 24px !important;
+}
+
+.h3-Direccion{
+  font-size: 10pt;
+  color: var(--ion-color-secondary);
+}
+.h3-Colonia{
+  font-size: 10pt;
+  color: var(--ion-color-primary);
+}
+.h3-Ciudad{
+  font-size: 10pt;
+  color: var(--ion-color-tertiary);
+}
+.h3-Pais{
+  font-size: 10pt;
+  color: var(--ion-color-danger);
+}
+.h3-Rol{
+  font-size: 10pt;
+  color: var(--ion-color-secondary);
+}
+.h3-Plan{
+  font-size: 10pt;
+  color: var(--ion-color-danger);
+}
+
+.avatar-start {
+  font-size: 25px !important;
+  position: static;
+  left: 17px;
+  top: 12px;
+}
+
+//  Sirve para todos los nombres largos
+// .nombre{
+//   font-size: 15pt !important;
+//   /* text-align: center; */
+//   padding-left: 28%;
+//   padding-right: 34%;
+//   position: absolute;
+//   padding-bottom: 0%;
+//   margin-bottom: -10%;
+//   top: 31%;
+// }
+
+// Sirve para ejemplo de stan
+.nombre{
+  font-size: 15pt !important;
+  padding-left: 34%;
+  /* padding-right: 41%; */
+  position: absolute;
+  padding-bottom: 0%;
+  margin-bottom: -10%;
+  top: 42%;
+  font-weight: bold;
+}
+
+.cambiarFoto{
+  font-size: 25px !important;
+  position: absolute;
+  // right: 64%;
+  padding-left: 7%;
+  padding-right: 5%;
+  top: 48px;
+}
+
+ion-list-header{
+  color: black;
+  font-weight: bold;
+}
