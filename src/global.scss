@@ -27,16 +27,16 @@
 
 
 .tabs-md .tab-button-plane[aria-selected=true] .tab-button-icon-plane {
-  color: rgb(0, 0, 0) !important;
+  color: black !important;
 }
 .tabs-md .tab-button-home[aria-selected=true] .tab-button-icon-home {
-  color: rgb(0, 0, 0) !important;
+  color: black !important;
 }
 .tabs-md .tab-button-notif[aria-selected=true] .tab-button-icon-notif {
-  color: rgb(0, 0, 0) !important;
+  color: black !important;
 }
 .tabs-md .tab-button-chat[aria-selected=true] .tab-button-icon-chat {
-  color: rgb(0, 0, 0) !important;
+  color: black !important;
 }
 
 
@@ -51,4 +51,21 @@
   top: 70%;
   position: absolute; 
   display: block;  
+}
+
+.h3-Secondary{
+  font-size: 10pt;
+  color: var(--ion-color-secondary);
+}
+.h3-Primary{
+  font-size: 10pt;
+  color: var(--ion-color-primary);
+}
+.h3-Tertiary{
+  font-size: 10pt;
+  color: var(--ion-color-tertiary);
+}
+.h3-Danger{
+  font-size: 10pt;
+  color: var(--ion-color-danger);
 }

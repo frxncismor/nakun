@@ -21,11 +21,20 @@ export class ChatPage implements OnInit {
   constructor( private modalCtrl: ModalController, private dataService: ServiceService) { }
 
   ngOnInit() {
-     this.dataService.getContacts().subscribe( contactos => {
-      console.log(contactos);
-      this.contactos = contactos;
-    });
+   
+    this.ionViewWillEnter();
   }
+
+  ionViewWillEnter() {
+
+      this.dataService.getContacts().subscribe( contactos => {
+        console.log(contactos);
+        this.contactos = contactos;
+      });
+ 
+
+  }
+  
 
   abrirChat(Contacto) {
 
@@ -55,4 +64,5 @@ export class ChatPage implements OnInit {
   buscar(event) {
     this.textoBuscar = event.detail.value;
   }
+  
 }

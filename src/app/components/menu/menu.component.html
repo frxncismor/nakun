@@ -87,7 +87,7 @@
             <ion-buttons slot="start">
               
               <ion-menu-toggle>
-                <ion-button color="dark">
+                <ion-button color="dark" mode="ios" (click)="reportarBug()">
                   <ion-icon src="/assets/bug.svg" slot="start"></ion-icon>
                 </ion-button>
               </ion-menu-toggle>
@@ -98,7 +98,7 @@
           
           <ion-buttons slot="end">
 
-            <ion-button color="dark" routerLink="/login">
+            <ion-button color="dark" (click)="Logout()" mode="ios">
               <ion-icon src="/assets/logout.svg" slot="end"></ion-icon>
             </ion-button>
 

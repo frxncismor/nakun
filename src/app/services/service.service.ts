@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Componente, Contacto, Notificaciones, RespuestaTopHeadlines, Profesional, RespuestaProfesionales } from '../interfaces/interfaces';
+import { delay } from 'q';
 
 @Injectable({
   providedIn: 'root'

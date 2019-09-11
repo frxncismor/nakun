@@ -1,5 +1,55 @@
 <app-header2 titulo="configuración"></app-header2>
 
-<ion-content>
+<ion-content padding>
+  <ion-list>
+    <ion-list-header mode="ios">
+      <ion-label style="color: var(--ion-color-secondary);">Datos personales</ion-label>
+    </ion-list-header>
+    <ion-item lines="none" (click)="editarNombre()">
+      <ion-label>
+        <h3>Nombre(s)</h3>
+        <h5>Stanley</h5>
+      </ion-label>
+    </ion-item>
 
+    <ion-item lines="none" (click)="editarNombre()">
+      <ion-label>
+        <h3>Apellido Paterno</h3>
+        <h5>Martin</h5>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" (click)="editarNombre()">
+      <ion-label>
+        <h3>Apellido Materno</h3>
+        <h5>Lieber</h5>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" (click)="editarNombre()">
+      <ion-label>
+        <h3 >Edad</h3>
+        <h5>20</h5>
+      </ion-label>
+    </ion-item>
+
+    <ion-list-header mode="ios">
+      <ion-label style="color: var(--ion-color-danger);">Cuenta</ion-label>
+    </ion-list-header>
+
+    <ion-item lines="none" (click)="editarNombre()">
+      <ion-label>
+        <h3 >Correo Electronico</h3>
+        <h5>stan@lee.com</h5>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" (click)="editarNombre()">
+      <ion-label>
+        <h3 >Contraseña</h3>
+        <h5>123123</h5>
+        <!-- Convertir esto a asteriscos automaticamente -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

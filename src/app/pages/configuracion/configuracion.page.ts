@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
+import { EditarDescripcionComponent } from '../../components/editar-descripcion/editar-descripcion.component';
 
 @Component({
   selector: 'app-configuracion',
@@ -8,7 +9,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class ConfiguracionPage implements OnInit {
 
-  constructor(private menuCtrl: MenuController) { }
+  constructor(private menuCtrl: MenuController, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -17,5 +18,17 @@ export class ConfiguracionPage implements OnInit {
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
+
+  async editarNombre() {
+    const editarDescripcion = await this.modalCtrl.create({
+      component: EditarDescripcionComponent,
+      componentProps: {
+        value: 123
+      },
+      cssClass: 'editarDescripcion'
+    });
+    return await editarDescripcion.present();
+  }
+
 
 }
