@@ -3,32 +3,49 @@
     "id": "1",
     "name": "Spider Man",
     "img": "/assets/spider-man.jpg",
-    "lastMessage": "¡Hola Spider-Man!",
-    "state": "entregado",
-    "time": "9:15 am"
+    "messages": [
+      {
+        "user": "Spider Man",
+        "msg": "¡Hola Stan!",
+        "time": 1554090856000,
+        "state": ""
+      },
+      {
+        "user": "Spider Man",
+        "msg": "¡Hola Stan!",
+        "time": 1554090856000,
+        "state": ""
+      },
+      {
+        "user": "Stan Lee",
+        "msg": "¡Hola Spider Man!",
+        "time": 1554090856000,
+        "state": "entregado"
+      }
+    ]
   },
   {
     "id": "2",
     "name": "Wolverine",
     "img": "/assets/wolverine.jpg",
     "lastMessage": "¿Cómo estás Wolverine?",
-    "state": "leido" ,
-    "time": "9:15 am"
+    "state": "leido",
+    "time": 1554090956000
   },
   {
     "id": "3",
     "name": "Capitan America",
     "img": "/assets/captain.jpg",
     "lastMessage": "Gracias por tu trabajo ",
-    "state": "enviado" ,
-    "time": "9:15 am"
+    "state": "enviado",
+    "time": 1554091056000
   },
   {
     "id": "4",
     "name": "Deadpool",
     "img": "/assets/deadpool.jpg",
     "lastMessage": "¡Hola viejito! ",
-    "state": "recibido" ,
+    "state": "recibido",
     "time": "9:15 am"
   }
 ]

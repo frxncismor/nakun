@@ -11,7 +11,8 @@ import { NoticiaComponent } from './noticia/noticia.component';
 import { ProfesionalComponent } from './profesional/profesional.component';
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
 import { EditarDescripcionComponent } from './editar-descripcion/editar-descripcion.component';
-
+import { AutosizeModule } from 'ngx-autosize';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -26,8 +27,8 @@ import { EditarDescripcionComponent } from './editar-descripcion/editar-descripc
     NoticiaComponent,
     ProfesionalComponent,
     ProfesionalesComponent,
-    EditarDescripcionComponent
-  ],
+    EditarDescripcionComponent, 
+   ],
   exports: [
     HeaderComponent,
     MenuComponent,
@@ -40,7 +41,10 @@ import { EditarDescripcionComponent } from './editar-descripcion/editar-descripc
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule
+    RouterModule,
+    AutosizeModule,
+    FormsModule
+
   ]
 })
 export class ComponentsModule { }

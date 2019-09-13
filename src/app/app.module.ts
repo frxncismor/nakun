@@ -14,6 +14,7 @@ import { PipesModule } from './pipes/pipes.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -28,7 +29,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
-    PipesModule
+    PipesModule,
+    FormsModule
   ],
   providers: [
     StatusBar,

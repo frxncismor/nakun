@@ -18,10 +18,12 @@ export class ChatPage implements OnInit {
   textoBuscar = '';
   contactos: any [] = [];
 
+  currentUser = "Stan Lee";
+  newMsg = '';
+
   constructor( private modalCtrl: ModalController, private dataService: ServiceService) { }
 
-  ngOnInit() {
-   
+  ngOnInit() { 
     this.ionViewWillEnter();
   }
 
@@ -31,10 +33,9 @@ export class ChatPage implements OnInit {
         console.log(contactos);
         this.contactos = contactos;
       });
- 
 
   }
-  
+
 
   abrirChat(Contacto) {
 
