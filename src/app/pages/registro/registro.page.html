@@ -49,7 +49,7 @@
         
     </ion-list>
 
-    <ion-button class="RgButton" padding Expand="block" Fill="solid" color="tertiary" routerLink="/tabs/home" type="submit" [disabled]="formulario.invalid">Registrate</ion-button>
+    <ion-button class="RgButton" padding Expand="block" Fill="solid" color="tertiary" type="submit" (click)="onSubmitRegister()" [disabled]="formulario.invalid">Registrate</ion-button>
 
   </form>
 

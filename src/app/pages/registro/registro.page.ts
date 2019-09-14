@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from "../../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-registro',
@@ -15,7 +17,7 @@ export class RegistroPage implements OnInit {
 
   // diaNaci: Date = new Date();
 
-  registro = {
+   registro = {
     nombre: '',
     apellido: '',
     email: '',
@@ -28,7 +30,13 @@ export class RegistroPage implements OnInit {
     sexo: ''
   };
 
-  constructor(private menuCtrl: MenuController) { }
+  /*nombre: string;
+  apellido: string;
+  email: string;
+  password: string;*/
+
+
+  constructor(private menuCtrl: MenuController, private auth : AuthService, private router: Router) { }
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -46,12 +54,19 @@ export class RegistroPage implements OnInit {
     // this.registro.fechaNaci.year = this.fechaNaci.getFullYear();
   }
 
-  Registrar() {
+  /*Registrar() {
     console.log(this.registro);
-  }
+  }*/
 
   seleccionSexo(ev: any) {
     this.sexo = ev.detail.value;
+  }
+
+  onSubmitRegister(){
+    this.auth.register(this.registro.email, this.registro.password,
+      this.registro.nombre, this.registro.apellido).then( auth => {
+      this.router.navigate(['/tabs/home'])
+    }).catch(err => console.log(err))
   }
 
 }

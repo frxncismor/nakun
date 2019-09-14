@@ -13,10 +13,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
+<<<<<<< HEAD
+import { firebaseConfig } from "../environments/environment";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule} from "@angular/fire/auth";
+import { AngularFirestoreModule, FirestoreSettingsToken } from "@angular/fire/firestore";
+=======
 
 import { FormsModule } from '@angular/forms';
 
 
+>>>>>>> db3bf9353b30df961fa9c9df271d8df35c2d0fa4
 
 @NgModule({
   declarations: [
@@ -30,7 +37,12 @@ import { FormsModule } from '@angular/forms';
     ComponentsModule,
     HttpClientModule,
     PipesModule,
+<<<<<<< HEAD
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule, AngularFirestoreModule
+=======
     FormsModule
+>>>>>>> db3bf9353b30df961fa9c9df271d8df35c2d0fa4
   ],
   providers: [
     StatusBar,
