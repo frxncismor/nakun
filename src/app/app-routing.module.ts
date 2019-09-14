@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> dab99c0aa2e3576bb06f825965c4c713396eaefc
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
@@ -22,10 +18,6 @@ const routes: Routes = [
   { path: 'configuracion', loadChildren: './pages/configuracion/configuracion.module#ConfiguracionPageModule' },
   { path: 'soporte-tecnico', loadChildren: './pages/soporte-tecnico/soporte-tecnico.module#SoporteTecnicoPageModule' },
   { path: 'bienvenido', loadChildren: './pages/bienvenido/bienvenido.module#BienvenidoPageModule' },
-<<<<<<< HEAD
-
-=======
->>>>>>> dab99c0aa2e3576bb06f825965c4c713396eaefc
   // { path: '**', redirectTo: 'login'},
   
 ];
@@ -36,8 +28,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-<<<<<<< HEAD
 export class AppRoutingModule { }
-=======
-export class AppRoutingModule {}
->>>>>>> dab99c0aa2e3576bb06f825965c4c713396eaefc
