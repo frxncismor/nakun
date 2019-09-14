@@ -1,8 +1,8 @@
 
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from "./guards/auth.guard";
-import { NologinGuard } from "./guards/nologin.guard";
+import { AuthGuard } from './guards/auth.guard';
+import { NologinGuard } from './guards/nologin.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'tabs', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate : [NologinGuard] },
@@ -29,3 +29,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+export class AppRoutingModule {}
