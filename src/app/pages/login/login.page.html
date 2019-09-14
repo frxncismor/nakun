@@ -20,13 +20,13 @@
       </ion-item>
     
       <ion-item class="segundo" >
-        <ion-input required  autocomplete="on" class="ion-text-center" placeholder="Contraseña" type="password" [(ngModel)]="usuario.password" name="password"></ion-input>
+        <ion-input required  autocomplete="on" class="ion-text-center" [(ngModel)]="usuario.password" placeholder="Contraseña" type="password" name="password"></ion-input>
       </ion-item>    
 
       
     </ion-list>
     
-    <ion-button padding Expand="block" Fill="solid" type="submit" [disabled]="formulario.invalid" routerLink="/tabs/home">Inicia Sesión</ion-button>
+    <ion-button (click)="onSubmitLogin()" padding Expand="block" Fill="solid" type="submit" [disabled]="formulario.invalid">Inicia Sesión</ion-button>
 
     
   </form>

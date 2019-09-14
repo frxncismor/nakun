@@ -13,9 +13,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
-
-
-
+import { firebaseConfig } from "../environments/environment";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule} from "@angular/fire/auth";
+import { AngularFirestoreModule, FirestoreSettingsToken } from "@angular/fire/firestore";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
-    PipesModule
+    PipesModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule, AngularFirestoreModule
   ],
   providers: [
     StatusBar,

@@ -4,7 +4,7 @@ import { Componente } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+import { AuthService } from "../../services/auth.service";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,7 +14,8 @@ export class MenuComponent implements OnInit {
 
 
   componentes: Observable<Componente[]>;
-  constructor( private dataService: ServiceService, private router: Router, public alertCtrl: AlertController) { }
+  constructor( private dataService: ServiceService, private router: Router, public alertCtrl: AlertController,
+    public authservice : AuthService) { }
 
   ngOnInit() {
     this.componentes = this.dataService.getMenuOptions();
@@ -56,7 +57,7 @@ export class MenuComponent implements OnInit {
     await input.present();
   }
 
-  async Logout() {
+  async onLogout() {
     const alert = await this.alertCtrl.create({
       header: '¿Cerrar sesión?',
       // subHeader: 'Subtitle',
@@ -73,8 +74,8 @@ export class MenuComponent implements OnInit {
           {
             text: 'Si',
             handler: (blah) => {
-              console.log('Boton OK');
-              this.router.navigateByUrl('/login');
+              this.authservice.logout();
+              ;
             }
           }
       ]
@@ -82,4 +83,9 @@ export class MenuComponent implements OnInit {
 
     await alert.present();
   }
+
+  /*onLogout()
+  {
+    this.authservice.logout();
+  }*/
 }
