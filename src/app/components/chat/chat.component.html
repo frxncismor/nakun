@@ -25,37 +25,42 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content padding >
+   
+  <ion-content>
+    <ion-grid>
+      <ion-row *ngFor="let message of messages">
+        <ion-col size="9" *ngIf="currentUser !== message.user" class="message other-message">
+          <b>{{ message.user }}</b><br>
+          <span>{{ message.msg }}</span>
+          <div class="time" text-right><br>
+            {{ message.createdAt | date:'short'}}
+          </div>
+        </ion-col>
+     
+        <ion-col offset="3" size="9" *ngIf="currentUser === message.user" class="message my-message">
+          <b>{{ message.user }}</b><br>
+          <span>{{ message.msg }}</span>
+          <div class="time" text-right><br>
+            {{ message.createdAt | date:'short'}}
+          </div>
+        </ion-col>
+     
+      </ion-row>
+    </ion-grid>
+    </ion-content>
     
-  
-    <div>
-      <ion-card color="light" class="mensajeRecibido">
-        <ion-card-content  class="textoMensajeRecibido">
-            ¡Hola Stan!
-        </ion-card-content>
-      </ion-card>
-    </div>
+    <ion-footer>
+      <ion-toolbar color="light">
+        <ion-row align-items-center no-padding>
+          <ion-col size="10">
+            <ion-textarea autosize maxRows="4" [(ngModel)]="newMsg" class="message-input"></ion-textarea>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="sendMessage()" expand="block" fill="clear" color="primary" [disabled]="newMsg === ''" class="msg-btn">
+              <ion-icon slot="icon-only" name="send"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
     
-    <div>
-      <ion-card color="secondary"   class="mensajeEnviado">
-        <ion-card-content class="ion-text-left">
-            ¡Hola Spider-Man!
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-  </ion-content>
-  
-  <ion-footer color="textArea" mode="md">
-   <ion-item >
-     <ion-textarea cols="10" mode="ios"  padding></ion-textarea>
-     <ion-buttons slot="end">
-       
-       <ion-button (click)="enviar()">
-         <ion-icon style="color: #4598CD;" name="md-send"></ion-icon>
-       </ion-button>
-      
-     </ion-buttons>
-   </ion-item>
-  </ion-footer>
-  

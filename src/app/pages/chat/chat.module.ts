@@ -9,6 +9,10 @@ import { ChatPage } from './chat.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { PipesModule } from '../../pipes/pipes.module';
 
+import { AutosizeModule } from 'ngx-autosize';
+
+
+
 
 const routes: Routes = [
   {
@@ -27,7 +31,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     ComponentsModule,
-    PipesModule
+    PipesModule,
+    AutosizeModule
     
   ],
   declarations: [ChatPage]

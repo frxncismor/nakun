@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { ModalController, NavParams, IonContent } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Contacto } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
@@ -14,6 +14,29 @@ export class ChatComponent implements OnInit {
   public chat: any;
   public chatRoom: any;
 
+  newMsg = '';
+  currentUser = 'StanLee';
+
+  messages = [
+    {
+      user: 'StanLee',
+      createdAt: 1554090856000,
+      msg: 'Hey whats up mate?'
+    },
+    {
+      user: 'Spider Man',
+      createdAt: 1554090956000,
+      msg: 'Working on the ionic mission, you?'
+    },
+    {
+      user: 'StanLee',
+      createdAt: 1554091056000,
+      msg: 'Doing some new tutorial stuff'
+    }
+  ];
+  
+  @ViewChild(IonContent, {static: true}) content: IonContent;
+
   constructor( private modalCtrl: ModalController, private dataService: ServiceService, private navParams: NavParams) { }
 
   ngOnInit() {
@@ -26,19 +49,25 @@ export class ChatComponent implements OnInit {
 
   }
 
+  sendMessage() {
+    this.messages.push({
+      user: 'StanLee',
+      createdAt: new Date().getTime(),
+      msg: this.newMsg
+    });
+
+    this.newMsg = '';
+
+
+    setTimeout(() => {
+      this.content.scrollToBottom(100);
+    });
+    
+  }
+
   closeChat() {
     this.modalCtrl.dismiss();
   }
-
-  // enviar() {
-  //   const mensaje : Message = {
-  //     content: this.msg,
-  //     type: 'text',
-  //     date: new Date()
-  //   }
-
-  //   this.msg = "";
-  // }
 
   abrirPerfil() {
     console.log('Abrir perfil');
