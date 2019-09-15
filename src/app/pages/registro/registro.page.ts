@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { AuthService } from "../../services/auth.service";
-import { Router } from "@angular/router";
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -36,7 +36,7 @@ export class RegistroPage implements OnInit {
   password: string;*/
 
 
-  constructor(private menuCtrl: MenuController, private auth : AuthService, private router: Router) { }
+  constructor(private menuCtrl: MenuController, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -62,11 +62,11 @@ export class RegistroPage implements OnInit {
     this.sexo = ev.detail.value;
   }
 
-  onSubmitRegister(){
+  onSubmitRegister() {
     this.auth.register(this.registro.email, this.registro.password,
       this.registro.nombre, this.registro.apellido).then( auth => {
-      this.router.navigate(['/tabs/home'])
-    }).catch(err => console.log(err))
+      this.router.navigate(['/tabs/home']);
+    }).catch(err => console.log(err));
   }
 
 }
