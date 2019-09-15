@@ -8,7 +8,7 @@ import { Article } from '../../interfaces/interfaces';
 })
 export class DestacadosComponent implements OnInit {
 
-  @Input() destacados: Article[] = [];
+  @Input() destacados: any = [];
   constructor() { }
 
   ngOnInit() {}

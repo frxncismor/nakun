@@ -30,12 +30,6 @@ export class RegistroPage implements OnInit {
     sexo: ''
   };
 
-  /*nombre: string;
-  apellido: string;
-  email: string;
-  password: string;*/
-
-
   constructor(private menuCtrl: MenuController, private auth : AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -49,14 +43,10 @@ export class RegistroPage implements OnInit {
 
   cambioFecha( event ) {
     this.fechaNaci = new Date(event.detail.value);
-    // this.registro.fechaNaci.day = this.fechaNaci.getDate();
-    // this.registro.fechaNaci.month = this.fechaNaci.getMonth();
-    // this.registro.fechaNaci.year = this.fechaNaci.getFullYear();
+    this.registro.fechaNaci.day = this.fechaNaci.getDate().toString();
+    this.registro.fechaNaci.month = this.fechaNaci.getMonth().toString();
+     this.registro.fechaNaci.year = this.fechaNaci.getFullYear().toString();
   }
-
-  /*Registrar() {
-    console.log(this.registro);
-  }*/
 
   seleccionSexo(ev: any) {
     this.sexo = ev.detail.value;
@@ -64,8 +54,9 @@ export class RegistroPage implements OnInit {
 
   onSubmitRegister(){
     this.auth.register(this.registro.email, this.registro.password,
-      this.registro.nombre, this.registro.apellido).then( auth => {
-      this.router.navigate(['/tabs/home'])
+      this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci).then( auth => {
+      this.router.navigate(['/tabs/home']);
+      console.log(this.registro);
     }).catch(err => console.log(err))
   }
 
