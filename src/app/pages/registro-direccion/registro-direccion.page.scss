@@ -1,0 +1,33 @@
+ion-content{
+  --ion-background-color:#F8FEE4;
+}
+.direccion, .colonia, .ciudad, .estado, .pais{
+  --ion-background-color: #ffffff;
+}
+
+img{
+  max-height: 30vh;
+  padding-bottom: 20px;
+}
+
+.RgButton{
+  padding-bottom: var(--ion-padding, 36px);
+  padding-top: var(--ion-padding, 5px);
+}
+
+.inputs{
+  padding-top: 20px;
+}
+
+p{
+  font-size: 9pt;
+  font-weight: bold;
+}
+
+h5{
+  padding-bottom: 0pt;
+}
+
+ion-item{
+  padding-bottom: 5px;
+}

@@ -5,6 +5,7 @@ import { ServiceService } from '../../services/service.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from "../../services/auth.service";
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -83,6 +84,8 @@ export class MenuComponent implements OnInit {
 
     await alert.present();
   }
+
+ 
 
   /*onLogout()
   {

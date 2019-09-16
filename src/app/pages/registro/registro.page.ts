@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { AuthService } from "../../services/auth.service";
-import { Router } from "@angular/router";
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -52,10 +52,10 @@ export class RegistroPage implements OnInit {
     this.sexo = ev.detail.value;
   }
 
-  onSubmitRegister(){
+  onSubmitRegister() {
     this.auth.register(this.registro.email, this.registro.password,
       this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci).then( auth => {
-      this.router.navigate(['/tabs/home']);
+      this.router.navigate(['/bienvenido']);
       console.log(this.registro);
     }).catch(err => console.log(err))
   }

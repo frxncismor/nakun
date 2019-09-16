@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
 import { EditarDescripcionComponent } from '../../components/editar-descripcion/editar-descripcion.component';
+import { AngularFirestore } from '@angular/fire/firestore';
+import {AuthService} from '../../services/auth.service';
+import { userInfo } from 'os';
 
+interface usDatos {
+  nombre : String,
+  apellido : String,
+  sexo : String,
+}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -9,12 +17,30 @@ import { EditarDescripcionComponent } from '../../components/editar-descripcion/
 })
 export class ProfilePage implements OnInit {
 
+  InfoUs:  any = [];
+
   progreso = 0.5 * 10;
-  constructor(private menuCtrl: MenuController, private modalCtrl: ModalController) { }
+  constructor(private auth: AuthService,private menuCtrl: MenuController, private modalCtrl: ModalController,
+    private AnguFire : AngularFirestore) {
+
+     }
 
   ngOnInit() {
     this.ionViewWillEnter();
+    //this.cargarPerfil();
   }
+
+  /*cargarPerfil(){ this.auth.getUsBd().subscribe(usDatos =>{
+    usDatos.map(us =>{
+      const data : usDatos = us.payload.doc.data() as usDatos;
+      //data.id = us.payload.doc.id;
+      console.log(data);
+      this.InfoUs.push(data.nombre);
+      this.InfoUs.push(data.sexo)
+    } )
+  })
+  }*/
+
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);

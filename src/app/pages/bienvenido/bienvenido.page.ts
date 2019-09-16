@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bienvenido',
@@ -30,9 +31,14 @@ export class BienvenidoPage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
   }
+
+  onComenzar(){
+    this.router.navigate(['/tabs/home']);
+  }
+
 
 }

@@ -1,0 +1,39 @@
+
+
+
+<ion-content>
+
+  <ion-row>
+      <ion-col>
+        <ion-img style="height: auto; max-width: 200vh; padding: 33px 27px 0px 25px" src="/assets/Logo.svg" ></ion-img>
+      </ion-col>
+  </ion-row>
+
+  <form #formulario="ngForm" (ngSubmit)="Registrar()">
+
+    <ion-list class="inputs" inset="true">
+      <ion-item class="direccion" >
+        <ion-input type="text" required  autofocus="true" text-capitalize class="ion-text-center" placeholder="Direccion" [(ngModel)]="registro.direccion" name="direccion"></ion-input>
+      </ion-item>
+      <ion-item class="colonia" >
+        <ion-input type="text" required  autofocus="true" text-capitalize class="ion-text-center" placeholder="Colonia" [(ngModel)]="registro.colonia" name="colonia"></ion-input>
+      </ion-item>
+      <ion-item class="ciudad" >
+        <ion-input type="text" required  autofocus="true" text-capitalize class="ion-text-center" placeholder="Ciudad" [(ngModel)]="registro.ciudad" name="ciudad"></ion-input>
+      </ion-item>
+      <ion-item class="estado" >
+        <ion-input type="text" required  autofocus="true" text-capitalize class="ion-text-center" placeholder="Estado" [(ngModel)]="registro.estado" name="estado"></ion-input>
+      </ion-item>
+      <ion-item class="pais" >
+        <ion-input type="text" required  autofocus="true" text-capitalize class="ion-text-center" placeholder="Pais" [(ngModel)]="registro.pais" name="pais"></ion-input>
+      </ion-item>
+        
+    </ion-list>
+
+    <ion-button class="RgButton" padding Expand="block" Fill="solid" color="tertiary" type="submit"  [disabled]="formulario.invalid">Registrate</ion-button>
+
+  </form>
+
+  <!-- <ion-item-divider></ion-item-divider> -->
+  
+</ion-content>

@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'configuracion', loadChildren: './pages/configuracion/configuracion.module#ConfiguracionPageModule' },
   { path: 'soporte-tecnico', loadChildren: './pages/soporte-tecnico/soporte-tecnico.module#SoporteTecnicoPageModule' },
   { path: 'bienvenido', loadChildren: './pages/bienvenido/bienvenido.module#BienvenidoPageModule' },
+  { path: 'registro-direccion', loadChildren: './pages/registro-direccion/registro-direccion.module#RegistroDireccionPageModule' },
+
   // { path: '**', redirectTo: 'login'},
   
 ];
@@ -28,4 +31,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
