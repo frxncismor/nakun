@@ -8,7 +8,7 @@
          </ion-buttons> -->
   
          
-      <ion-title>Descripción</ion-title>
+      <ion-title>{{titulo}}</ion-title>
 
       <ion-buttons slot="end">
         <ion-button (click)="guardar()" color="secondary">
@@ -28,7 +28,7 @@
 
   <ion-content padding>
     
-    <ion-textarea placeholder="Soy una persona muy creativa pero me cuesta lidiar con mis emociones"></ion-textarea>
+    <ion-textarea [(ngModel)]="nuevo" [placeholder]="cambio" text-center></ion-textarea>
 
   </ion-content>
 

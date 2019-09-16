@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Componente, Contacto, Notificaciones, RespuestaTopHeadlines, Profesional, RespuestaProfesionales } from '../interfaces/interfaces';
+// tslint:disable-next-line: max-line-length
+import { Componente, Contacto, Notificaciones, RespuestaTopHeadlines, Profesional, RespuestaProfesionales, Usuario } from '../interfaces/interfaces';
 import { delay } from 'q';
 
 @Injectable({
@@ -30,5 +31,9 @@ export class ServiceService {
 
   getProfesionales() {
     return this.http.get<RespuestaProfesionales>('/assets/data/profesionales.json');
+  }
+
+  getUsuario() {
+    return this.http.get<Usuario>('/assets/data/usuario.json');
   }
 }
