@@ -44,11 +44,12 @@ export class NuevoPostComponent implements OnInit {
   }
 
   onClick( check ) {
-    console.log(check);
+    console.log(check.name);
   }
 
-  publicar() {
-    console.log(this.post);
+  publicar(event) {
+    console.log(this.post, event);
+    // console.log(this.post.categorias);
     this.modalCtrl.dismiss();
   }
 }
