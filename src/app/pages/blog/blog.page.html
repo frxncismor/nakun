@@ -1,5 +1,31 @@
 <app-header2 titulo="blog"></app-header2>
+<!-- <ion-toolbar>
+  <ion-title text-center>Mis entradas</ion-title>
+</ion-toolbar> -->
 
-<ion-content>
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pulling-icon="null" refreshing-spinner="crescent"></ion-refresher-content>
+</ion-refresher>
 
+<app-destacados [destacados]="destacados"></app-destacados>  
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+
+  <ion-fab-button color="secondary" (click)="nuevoPost()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+
+</ion-fab>
+
+<ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-title text-center>Mis entradas</ion-title>
+  </ion-toolbar>
+</ion-footer>

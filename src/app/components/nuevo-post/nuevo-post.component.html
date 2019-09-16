@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    
+      <ion-buttons slot="start">
+          <ion-back-button text="" (click)="closeChat()"  color="secondary" defaultHref="/blog"></ion-back-button>
+       </ion-buttons>       
+    
+    <ion-title text-capitalize >Crear entrada</ion-title>
+
+    <ion-buttons slot="end">
+       <ion-button (click)="publicar()" type="submit" [disabled]="formulario.invalid">
+          PUBLICAR
+       </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card mode="ios" > 
+        <ion-card-header>
+          
+      
+            <div class=avatar-start>
+              <ion-avatar  mode="md" slot="start">
+                <img src="/assets/stan-lee.jpg" alt="">
+              </ion-avatar>
+            </div>
+            
+            <span class="nombre">Stan Lee</span>   
+              
+        </ion-card-header>
+        
+      </ion-card>
+
+<form #formulario="ngForm" (ngSubmit)="publicar()">
+  <ion-list>
+
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input type="text" [(ngModel)]="post.titulo" name="titulo" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <!-- <ion-input type="text" ></ion-input> -->
+      <ion-input [(ngModel)]="post.descripcion" name="descripcion" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Url</ion-label>
+      <ion-input type="text"  [(ngModel)]="post.url" name="url" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Imagen</ion-label>
+      <ion-input type="text" [(ngModel)]="post.imagen" name="imagen" required  ></ion-input>
+    </ion-item>
+
+    
+
+  </ion-list>
+
+  <ion-list>
+      <ion-list-header mode="ios">
+          <ion-label>Categoria</ion-label>
+        </ion-list-header>
+
+        <ion-item (click)="onClick(check)"  *ngFor="let check of post.categorias">
+            <ion-label>{{check.name}}</ion-label>
+            <ion-checkbox [(ngModel)]="check.selected" [name] ="check.name" [color]="check.color" required></ion-checkbox>
+          </ion-item>
+  </ion-list>
+</form>
+
+</ion-content>
