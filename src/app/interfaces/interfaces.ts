@@ -78,3 +78,16 @@ export interface Address {
   estado: string;
   pais: string;
 }
+
+// Interfaz para usuario
+
+export interface Usuario {
+  id: number;
+  nombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  edad: string;
+  email: string;
+  password: string;
+  direccion: Address;
+}

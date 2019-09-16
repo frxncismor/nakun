@@ -49,9 +49,9 @@ export class RegistroPage implements OnInit {
 
   cambioFecha( event ) {
     this.fechaNaci = new Date(event.detail.value);
-    // this.registro.fechaNaci.day = this.fechaNaci.getDate();
-    // this.registro.fechaNaci.month = this.fechaNaci.getMonth();
-    // this.registro.fechaNaci.year = this.fechaNaci.getFullYear();
+    this.registro.fechaNaci.day = this.fechaNaci.getDate().toString();
+    this.registro.fechaNaci.month = this.fechaNaci.getMonth().toString();
+    this.registro.fechaNaci.year = this.fechaNaci.getFullYear().toString();
   }
 
   /*Registrar() {

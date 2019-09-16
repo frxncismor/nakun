@@ -1,0 +1,19 @@
+{
+  "id": "1",
+  "nombre": "Stanley",
+  "apellidoPaterno": "Martin",
+  "apellidoMaterno": "Lieber",
+  "edad": "20",
+  "email": "stan@lee.com",
+  "password": "123123",
+  "direccion": 
+  {
+    "direccion": "Rosario Castellanos",
+    "numero": "2804",
+    "colonia": "Cumbres de Santa Catarina ",
+    "ciudad": "Santa Catarina",
+    "codigoPostal": "33452",
+    "estado": "Nuevo León",
+    "pais": "México"
+  }
+}
