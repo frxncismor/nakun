@@ -5,13 +5,15 @@ import { Router } from '@angular/router';
 import { auth } from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { userInfo } from 'os';
+import { map } from 'rxjs/operators';
 
-interface infUsuario {
-  Nombre : string,
-  Apellido : string,
-  Edad : string,
+export interface infUsuario {
+  Nombre : string
+  Apellido : string
   Sexo : string
+  Edad : string
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -51,13 +53,12 @@ export class AuthService {
     });
   }
 
-/*
-  getUsBd(){
-    return this.db.collection('usuarios').snapshotChanges();
-  }
-  getUsuariouid()
-  {
-    return this.AFauth.auth.currentUser.uid;
-  }
-*/
+    getUserInfo( usuarioIdD : string){
+      return this.db.collection('usuarios').doc(usuarioIdD).valueChanges();
+    }
+
+    getUserUid()
+    {
+      return this.AFauth.auth.currentUser.uid;
+    }
 }

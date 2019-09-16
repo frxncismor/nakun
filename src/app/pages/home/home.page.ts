@@ -3,15 +3,9 @@ import { Router } from '@angular/router';
 import { NavController, IonSegment, IonInfiniteScroll } from '@ionic/angular';
 import { Article, Profesional } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
-import { NoticiasService } from '../../services/noticias.service';
+import { NoticiasService, noticia } from '../../services/noticias.service';
 
-interface noticias {
-  id : String,
-  imagen : String,
-  nombre : String,
-  titulo : String ,
-  descripcion : String
-}
+
 
 @Component({
   selector: 'app-home',
@@ -102,12 +96,7 @@ export class HomePage implements OnInit {
 
   cargarDestacados(event?) {
     this.noticiasService.getNoticias().subscribe(noticias => {
-      noticias.map(nT => {
-        const data : noticias = nT.payload.doc.data() as noticias;
-        data.id = nT.payload.doc.id;
-        console.log(data);
-        this.destacados.push(data);
-      })
+      this.destacados = noticias;
     })
 
      /*if (noticias.articles.length === 0) {

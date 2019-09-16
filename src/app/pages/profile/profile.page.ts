@@ -2,14 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
 import { EditarDescripcionComponent } from '../../components/editar-descripcion/editar-descripcion.component';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {AuthService} from '../../services/auth.service';
-import { userInfo } from 'os';
+import {AuthService, infUsuario} from '../../services/auth.service';
 
-interface usDatos {
-  nombre : String,
-  apellido : String,
-  sexo : String,
-}
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -17,7 +12,10 @@ interface usDatos {
 })
 export class ProfilePage implements OnInit {
 
-  InfoUs:  any = [];
+  public US : any;
+  public UsAll = [];
+
+  public infUsuarios : infUsuario; 
 
   progreso = 0.5 * 10;
   constructor(private auth: AuthService,private menuCtrl: MenuController, private modalCtrl: ModalController,
@@ -27,19 +25,11 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.ionViewWillEnter();
-    //this.cargarPerfil();
+    this.auth.getUserInfo(this.auth.getUserUid()).subscribe(US=> {
+      console.log(US);
+      this.US = US;
+    })
   }
-
-  /*cargarPerfil(){ this.auth.getUsBd().subscribe(usDatos =>{
-    usDatos.map(us =>{
-      const data : usDatos = us.payload.doc.data() as usDatos;
-      //data.id = us.payload.doc.id;
-      console.log(data);
-      this.InfoUs.push(data.nombre);
-      this.InfoUs.push(data.sexo)
-    } )
-  })
-  }*/
 
 
   ionViewWillEnter() {
@@ -104,6 +94,8 @@ export class ProfilePage implements OnInit {
   cambiarFoto() {
     console.log('Cambiar foto');
   }
+
+
 
 
 }

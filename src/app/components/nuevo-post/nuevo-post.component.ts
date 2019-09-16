@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import {NoticiasService} from '../../services/noticias.service';
 
 @Component({
   selector: 'app-nuevo-post',
@@ -11,6 +12,7 @@ export class NuevoPostComponent implements OnInit {
   completed = false;
 
   post = {
+    nombre : 'Stan Lee',
     titulo: '',
     descripcion: '',
     url: '',
@@ -35,7 +37,7 @@ export class NuevoPostComponent implements OnInit {
     ]
   };
 
-  constructor( private modalCtrl: ModalController) { }
+  constructor( private modalCtrl: ModalController,public  noticiasS: NoticiasService) { }
 
   ngOnInit() {}
 
@@ -49,6 +51,7 @@ export class NuevoPostComponent implements OnInit {
 
   publicar() {
     console.log(this.post);
+    this.noticiasS.setNewPost(this.post.titulo,this.post.descripcion,this.post.nombre);
     this.modalCtrl.dismiss();
   }
 }

@@ -45,16 +45,13 @@ export class RegistroPage implements OnInit {
     this.fechaNaci = new Date(event.detail.value);
     this.registro.fechaNaci.day = this.fechaNaci.getDate().toString();
     this.registro.fechaNaci.month = this.fechaNaci.getMonth().toString();
-<<<<<<< HEAD
      this.registro.fechaNaci.year = this.fechaNaci.getFullYear().toString();
-=======
-    this.registro.fechaNaci.year = this.fechaNaci.getFullYear().toString();
->>>>>>> ae0c3cbf8f3efbbb5dbca04402b51f7fc368bfb5
   }
 
   seleccionSexo(ev: any) {
     this.sexo = ev.detail.value;
   }
+
 
   onSubmitRegister() {
     this.auth.register(this.registro.email, this.registro.password,
