@@ -11,7 +11,7 @@ export const firebaseConfig = {
   authDomain: "nakun-firebase-bd.firebaseapp.com",
   databaseURL: "https://nakun-firebase-bd.firebaseio.com",
   projectId: "nakun-firebase-bd",
-  storageBucket: "",
+  storageBucket: "nakun-firebase-bd.appspot.com",
   messagingSenderId: "159661123097",
   appId: "1:159661123097:web:588e71665b4da6f46d6c88"
 };

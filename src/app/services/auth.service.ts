@@ -4,6 +4,16 @@ import { promise } from 'protractor';
 import { Router } from '@angular/router';
 import { auth } from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { userInfo } from 'os';
+import { map } from 'rxjs/operators';
+
+export interface infUsuario {
+  Nombre : string
+  Apellido : string
+  Sexo : string
+  Edad : string
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,18 +38,27 @@ export class AuthService {
     });
   }
 
-  register(email: string, password: string, nombre: string, apellido: string) {
+  register(email: string, password: string, Nombre: string, Apellido: string, Sexo : string, FechaNacimiento) {
     return new Promise((resolve, reject) => {
       this.AFauth.auth.createUserWithEmailAndPassword(email, password).then(res => {
         const uid = res.user.uid;
         this.db.collection('usuarios').doc(uid).set({
-          uid,
-          nombre,
-          apellido
+          Nombre,
+          Apellido,
+          Sexo,
+          FechaNacimiento
         });
         resolve(res);
       }).catch(err => reject(err));
     });
-
   }
+
+    getUserInfo( usuarioIdD : string){
+      return this.db.collection('usuarios').doc(usuarioIdD).valueChanges();
+    }
+
+    getUserUid()
+    {
+      return this.AFauth.auth.currentUser.uid;
+    }
 }

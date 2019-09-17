@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { NavController, IonSegment, IonInfiniteScroll } from '@ionic/angular';
 import { Article, Profesional } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
+import { NoticiasService, noticia } from '../../services/noticias.service';
+
+
 
 @Component({
   selector: 'app-home',
@@ -14,11 +17,12 @@ export class HomePage implements OnInit {
   @ViewChild(IonSegment, {static: true}) segment: IonSegment;
   @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
 
-  destacados: Article[] = [];
+  destacados:  any = [];
 
   profesionales: Profesional[] = [];
 
-  constructor(private router: Router, private navCtrl: NavController, private dataService: ServiceService) { }
+  constructor(private router: Router, private navCtrl: NavController, private dataService: ServiceService
+    , public noticiasService: NoticiasService) { }
 
   ngOnInit() {
     this.cargarDestacados();
@@ -76,11 +80,11 @@ export class HomePage implements OnInit {
     this.dataService.getProfesionales().subscribe( resp => {
       console.log('profesionales', resp);
 
-      if ( resp.profesionals.length === 0) {
+      /*if ( resp.profesionals.length === 0) {
         event.target.disabled = true;
         return;
       }
-
+*/
       this.profesionales.push( ...resp.profesionals);
 
       if (event) {
@@ -91,10 +95,11 @@ export class HomePage implements OnInit {
   }
 
   cargarDestacados(event?) {
-   this.dataService.getNoticias().subscribe( resp => {
-     console.log('destacados', resp);
+    this.noticiasService.getNoticias().subscribe(noticias => {
+      this.destacados = noticias;
+    })
 
-     if (resp.articles.length === 0) {
+     /*if (noticias.articles.length === 0) {
        event.target.disabled = true;
        return;
      }
@@ -104,7 +109,7 @@ export class HomePage implements OnInit {
      if (event) {
        event.target.complete();
      }
-   });
+   });*/
   }
 
 }

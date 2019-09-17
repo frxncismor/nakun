@@ -4,6 +4,7 @@ import { Article } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
 import { NuevoPostComponent } from '../../components/nuevo-post/nuevo-post.component';
 
+
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.page.html',

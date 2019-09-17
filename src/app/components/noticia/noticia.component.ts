@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Article } from '../../interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
+import { NoticiasService } from '../../services/noticias.service';
+
+
+
 @Component({
   selector: 'app-noticia',
   templateUrl: './noticia.component.html',
@@ -9,12 +13,15 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 })
 export class NoticiaComponent implements OnInit {
 
-  @Input() noticia: Article;
+  @Input() noticia: any = [];
   @Input() indice: number;
-  
-  constructor(private iab: InAppBrowser) { }
 
-  ngOnInit() {}
+ // public noticiasReg: any = [];
+  
+  constructor(private iab: InAppBrowser, public noticiasService: NoticiasService) { }
+
+  ngOnInit() {
+  }
 
   abrirNoticia() {
     const browser = this.iab.create(this.noticia.url, '_system');

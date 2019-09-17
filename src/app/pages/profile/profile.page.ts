@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
 import { EditarDescripcionComponent } from '../../components/editar-descripcion/editar-descripcion.component';
+import { AngularFirestore } from '@angular/fire/firestore';
+import {AuthService, infUsuario} from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +12,25 @@ import { EditarDescripcionComponent } from '../../components/editar-descripcion/
 })
 export class ProfilePage implements OnInit {
 
+  public US : any;
+  public UsAll = [];
+
+  public infUsuarios : infUsuario; 
+
   progreso = 0.5 * 10;
-  constructor(private menuCtrl: MenuController, private modalCtrl: ModalController) { }
+  constructor(private auth: AuthService,private menuCtrl: MenuController, private modalCtrl: ModalController,
+    private AnguFire : AngularFirestore) {
+
+     }
 
   ngOnInit() {
     this.ionViewWillEnter();
+    this.auth.getUserInfo(this.auth.getUserUid()).subscribe(US=> {
+      console.log(US);
+      this.US = US;
+    })
   }
+
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
@@ -78,6 +94,8 @@ export class ProfilePage implements OnInit {
   cambiarFoto() {
     console.log('Cambiar foto');
   }
+
+
 
 
 }
