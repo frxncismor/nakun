@@ -11,11 +11,11 @@
    {{noticia.descripcion}}
   </ion-card-content>
   
-  <ion-item color="secondary">
+  <ion-item color="{{noticia.color}}">
       <ion-label>Categoria</ion-label>
       <ion-chip color="light">
-        <ion-icon name="heart" color="light"></ion-icon>
-        <ion-label>Salud</ion-label>
+        <ion-icon name="{{noticia.icono}}" color="light"></ion-icon>
+        <ion-label>{{noticia.categoria}}</ion-label>
       </ion-chip>
   </ion-item>
 </ion-card>

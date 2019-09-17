@@ -57,7 +57,6 @@ export class RegistroPage implements OnInit {
   }
 
   Registrar() {
-    
     // tslint:disable-next-line: max-line-length
     if ((this.registro.nombre === '') || (this.registro.apellido === '') || (this.registro.email === '') || (this.registro.password === '') || (this.registro.fechaNaci.day === '') || (this.registro.fechaNaci.month === '') ||  (this.registro.fechaNaci.year === '') ||  (this.registro.sexo === ''))  {
       this.completarDatos();

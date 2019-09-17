@@ -8,6 +8,10 @@ import { Observable } from 'rxjs';
 export interface noticia {
   id : String,
   img : String,
+  ulr : string,
+  categoria : string,
+  color : string,
+  icono : string,
   nombre : String,
   titulo : String ,
   descripcion : String
@@ -43,15 +47,19 @@ export class NoticiasService {
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
   }*/
 
-  setNewPost(titulo : String, descripcion : String, nombre : string, file : string, filePath : string, img : string)
+  setNewPost(titulo : String, descripcion : String, nombre : string,
+              url : string, img : string, categoria : string, color : string, icono : string)
   {
-
     const NID = Math.random().toString(36).substring(2);
     this.dbnoticias.collection('Noticias').doc(NID).set({
       titulo,
       descripcion,
       nombre,
-      img
+      url,
+      img,
+      categoria,
+      color,
+      icono
     })
   }
 
