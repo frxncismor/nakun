@@ -46,7 +46,8 @@ export class PlanePage implements OnInit {
   async nuevoPlane() {
     const modal = await this.modalCtrl.create({
     component: NuevoPlaneComponent,
-    componentProps: { value: 123 }
+    componentProps: { value: 123 },
+    cssClass: 'newPlane'
     });
   
     await modal.present();

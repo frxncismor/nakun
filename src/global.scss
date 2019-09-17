@@ -69,3 +69,10 @@
   font-size: 10pt;
   color: var(--ion-color-danger);
 }
+
+.newPlane .modal-wrapper{
+  height: 20%;
+  top: 80%;
+  position: fixed; 
+  display: block;  
+}

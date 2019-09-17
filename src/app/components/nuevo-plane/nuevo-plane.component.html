@@ -1,3 +1,39 @@
-<p>
-  nuevo-plane works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    
+      <ion-buttons slot="start">
+          <ion-back-button text="" (click)="closeChat()"  color="secondary" defaultHref="/tabs/plane"></ion-back-button>
+       </ion-buttons>       
+    
+    <ion-title text-capitalize >Nuevo Plane</ion-title>
+
+    <ion-buttons slot="end">
+       <ion-button (click)="publicar()" type="submit" [disabled]="formulario.invalid">
+          PUBLICAR
+       </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <form #formulario="ngForm" (ngSubmit)="publicar(event)">
+      <ion-list>
+         <ion-list-header>
+            <ion-label>Escribe un mensaje</ion-label>
+         </ion-list-header>
+<!--    
+         <ion-item>
+            <ion-label position="floating">Titulo</ion-label>
+            <ion-input type="text" [(ngModel)]="plane.titulo" name="titulo" required></ion-input>
+         </ion-item> -->
+   
+         <ion-item>
+            <ion-label position="floating">Mensaje</ion-label>
+            <ion-input type="text" [(ngModel)]="plane.mensaje" name="mensaje" required></ion-input>
+         </ion-item>
+
+
+      </ion-list>
+   </form>
+</ion-content>

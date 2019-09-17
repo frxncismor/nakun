@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-nuevo-plane',
@@ -7,8 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevoPlaneComponent implements OnInit {
 
-  constructor() { }
+  plane = {
+    mensaje: ''
+  };
+
+  constructor( private modalCtrl: ModalController) { }
 
   ngOnInit() {}
+
+  closeChat() {
+    this.modalCtrl.dismiss();
+  }
+
+  publicar() {
+    console.log('publicar');
+    console.log(this.plane);
+    this.modalCtrl.dismiss();
+  }
 
 }
