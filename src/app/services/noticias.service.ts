@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export interface noticia {
   id : String,
   img : String,
+  ulr : string,
   nombre : String,
   titulo : String ,
   descripcion : String
@@ -43,7 +44,7 @@ export class NoticiasService {
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
   }*/
 
-  setNewPost(titulo : String, descripcion : String, nombre : string, file : string, filePath : string, img : string)
+  setNewPost(titulo : String, descripcion : String, nombre : string,url : string, img : string)
   {
 
     const NID = Math.random().toString(36).substring(2);
@@ -51,6 +52,7 @@ export class NoticiasService {
       titulo,
       descripcion,
       nombre,
+      url,
       img
     })
   }

@@ -9,7 +9,7 @@
       </ion-col>
   </ion-row>
 
-  <form #formulario="ngForm" (ngSubmit)="Registrar()">
+  <form >
 
     <ion-list class="inputs" inset="true">
       <ion-item class="nombre" >
@@ -28,12 +28,12 @@
         <ion-input required autocomplete="on" class="ion-text-center" placeholder="Contraseña"  type="password" [(ngModel)]="registro.password" name="password" ></ion-input>
       </ion-item>   
       
-      <ion-item>
+      <ion-item lines="none">
           <ion-label >Fecha de nacimiento</ion-label>
-          <ion-datetime placeholder="Seleccionar"   display-format="DD MMMM YY" cancelText="Cancelar" [ngModel]="fechaNaci.toISOString()" name="diaNaci" (ionChange)="cambioFecha( $event )"></ion-datetime>
+          <ion-datetime required placeholder="Seleccionar"   display-format="DD MMMM YY" cancelText="Cancelar" [ngModel]="fechaNaci.toISOString()" name="diaNaci" (ionChange)="cambioFecha( $event )"></ion-datetime>
       </ion-item>
   
-      <ion-item>
+      <ion-item lines="none">
         <ion-segment mode="md" color="primary" (ionChange)="seleccionSexo($event)" [(ngModel)]="registro.sexo" name="sexo">
   
             <ion-segment-button mode="md" value="Hombre">
@@ -46,10 +46,15 @@
   
         </ion-segment>
       </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Profesional</ion-label>
+        <ion-toggle color="secondary"[disabled]='false' [(ngModel)]="toggleValue" name="toggle" (ionChange)="activatePopup()"></ion-toggle>
+      </ion-item>
         
     </ion-list>
 
-    <ion-button class="RgButton" padding Expand="block" Fill="solid" color="tertiary" type="submit" (click)="onSubmitRegister()" [disabled]="formulario.invalid">Registrate</ion-button>
+    <ion-button class="RgButton" padding Expand="block" Fill="solid" color="tertiary" type="submit" (click)="Registrar()" >Registrate</ion-button>
 
   </form>
 
@@ -59,7 +64,7 @@
   
 
 
-  <ion-button class="FbButton" padding Expand="block" Fill="solid" color="secondary"  >Registrate con Facebook</ion-button> 
+  <ion-button class="FbButton" padding Expand="block" Fill="solid" color="secondary" >Registrate con Facebook</ion-button> 
 
   <ion-list>
       <ion-item-divider mode="md" ></ion-item-divider>

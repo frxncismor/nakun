@@ -73,12 +73,12 @@ export class NuevoPostComponent implements OnInit {
   }
 
   onClick( check ) {
-    console.log(check);
+    console.log(check.name);
   }
 
   publicar() {
     console.log(this.post);
-    this.noticiasS.setNewPost(this.post.titulo,this.post.descripcion,this.post.nombre, this.N2file, this.N2filepAth, this.imgUrlpost);
+    this.noticiasS.setNewPost(this.post.titulo,this.post.descripcion,this.post.nombre,this.post.url, this.imgUrlpost);
     this.modalCtrl.dismiss();
   }
 }
