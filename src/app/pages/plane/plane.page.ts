@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { NuevoPlaneComponent } from '../../components/nuevo-plane/nuevo-plane.component';
 
 @Component({
   selector: 'app-plane',
@@ -36,9 +38,19 @@ export class PlanePage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor( private modalCtrl: ModalController) { }
 
   ngOnInit() {
+  }
+
+  async nuevoPlane() {
+    const modal = await this.modalCtrl.create({
+    component: NuevoPlaneComponent,
+    componentProps: { value: 123 }
+    });
+  
+    await modal.present();
+  
   }
 
 }

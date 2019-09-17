@@ -14,11 +14,12 @@ import { EditarDescripcionComponent } from './editar-descripcion/editar-descripc
 import { AutosizeModule } from 'ngx-autosize';
 import { FormsModule } from '@angular/forms';
 import { NuevoPostComponent } from './nuevo-post/nuevo-post.component';
+import { NuevoPlaneComponent } from './nuevo-plane/nuevo-plane.component';
 
 
 
 @NgModule({
-  entryComponents: [ChatComponent, EditarDescripcionComponent, NuevoPostComponent],
+  entryComponents: [ChatComponent, EditarDescripcionComponent, NuevoPostComponent, NuevoPlaneComponent],
   declarations: [
     HeaderComponent,
     MenuComponent,
@@ -29,7 +30,8 @@ import { NuevoPostComponent } from './nuevo-post/nuevo-post.component';
     ProfesionalComponent,
     ProfesionalesComponent,
     EditarDescripcionComponent, 
-    NuevoPostComponent
+    NuevoPostComponent,
+    NuevoPlaneComponent
    ],
   exports: [
     HeaderComponent,
@@ -39,7 +41,8 @@ import { NuevoPostComponent } from './nuevo-post/nuevo-post.component';
     DestacadosComponent,
     ProfesionalesComponent,
     EditarDescripcionComponent,
-    NuevoPostComponent
+    NuevoPostComponent,
+    NuevoPlaneComponent
   ],
   imports: [
     CommonModule,
