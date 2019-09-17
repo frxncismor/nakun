@@ -17,6 +17,7 @@ import { firebaseConfig } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireStorageModule} from '@angular/fire/storage';
 
 import { FormsModule } from '@angular/forms';
 
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule
   ],
   providers: [

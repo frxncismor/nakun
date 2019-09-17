@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore} from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface noticia {
   id : String,
@@ -15,7 +18,12 @@ export interface noticia {
 })
 export class NoticiasService {
 
-  constructor(private dbnoticias : AngularFirestore) { }
+
+  constructor(private dbnoticias : AngularFirestore, private storage : AngularFireStorage) { }
+
+  uploadPercent : Observable<number>;
+  urlImage : Observable<string>;
+  cosa : string;
 
   getNoticias(){
     return this.dbnoticias.collection('Noticias').snapshotChanges().pipe(map(noticias => {
@@ -26,13 +34,24 @@ export class NoticiasService {
       })
     }))
   }
-
-  setNewPost(titulo : String, descripcion : String, nombre : string)
+/*
+  setImgPost(file : string, filePath : string)
   {
-    this.dbnoticias.collection('Noticias').doc('prueba').set({
+    const ref = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    this.uploadPercent = task.percentageChanges();
+    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
+  }*/
+
+  setNewPost(titulo : String, descripcion : String, nombre : string, file : string, filePath : string, img : string)
+  {
+
+    const NID = Math.random().toString(36).substring(2);
+    this.dbnoticias.collection('Noticias').doc(NID).set({
       titulo,
       descripcion,
       nombre,
+      img
     })
   }
 
