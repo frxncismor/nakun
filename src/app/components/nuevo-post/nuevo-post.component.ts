@@ -23,24 +23,28 @@ export class NuevoPostComponent implements OnInit {
     categoria :
     [
       {
-        name: 'salud',
+        name: 'Relaciones',
         color: 'primary',
-        selected: false
+        selected: false,
+        icon : 'heart'
       },
       {
-        name: 'bienestar',
+        name: 'Familia',
         color: 'secondary',
-        selected: false
+        selected: false,
+        icon : 'contacts'
       },
       {
-        name: 'jejox',
+        name: 'Trabajo',
         color: 'tertiary',
-        selected: false
+        selected: false,
+        icon : 'flask'
       }
     ]
   };
 
   constructor( private modalCtrl: ModalController,public  noticiasS: NoticiasService, private storage : AngularFireStorage) { }
+  
   uploadPercent : Observable<number>;
   urlImage : Observable<string>;
 
@@ -48,6 +52,10 @@ export class NuevoPostComponent implements OnInit {
   N2filepAth : any;
 
   imgUrlpost : string;
+
+  IconoNot :string;
+  colNot : string;
+  catNot : string;
 
   ngOnInit() {}
 
@@ -73,12 +81,18 @@ export class NuevoPostComponent implements OnInit {
   }
 
   onClick( check ) {
-    console.log(check.name);
+    this.catNot = check.name;
+    this.colNot = check.color;
+    this.IconoNot = check.icon;
+    console.log(this.catNot);
+    console.log(this.colNot);
+    console.log(this.IconoNot);
+    
   }
 
   publicar() {
     console.log(this.post);
-    this.noticiasS.setNewPost(this.post.titulo,this.post.descripcion,this.post.nombre,this.post.url, this.imgUrlpost);
+    this.noticiasS.setNewPost(this.post.titulo,this.post.descripcion,this.post.nombre,this.post.url, this.imgUrlpost, this.catNot, this.colNot, this.IconoNot);
     this.modalCtrl.dismiss();
   }
 }
