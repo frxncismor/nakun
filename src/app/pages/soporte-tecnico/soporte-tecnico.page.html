@@ -1,5 +1,58 @@
 <app-header2 titulo="ayuda"></app-header2>
 
-<ion-content>
+<!-- <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '2444296675859662',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v4.0'
+      });
+    };
+  </script>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <div class="fb-messengermessageus" 
+  messenger_app_id="2444296675859662" 
+  page_id="Nákun-Atención-a-clientes-324037488532225>"
+  color="blue"
+  size="standard">
+</div> -->
+
+<!-- globito de messenger que no linkea al bot :C -->
+<ion-content padding>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="messenger" href="https://www.messenger.com/t/324037488532225">
+      <ion-icon src="/assets/messenger-negro.svg"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- <ion-title text-center >Información</ion-title> -->
+
+  <ion-card>
+    <ion-img src="/assets/question.svg"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>¿Aún tienes dudas?</ion-card-subtitle>
+      <ion-card-title>Prueba nuestro bot de Facebook Messenger</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Información</ion-label>
+    </ion-list-header>
+
+    <ion-item routerLink="/planes" detail lines="none">
+      <ion-label>Planes</ion-label>
+      <ion-icon slot="start" name="card"></ion-icon>
+    </ion-item>
+    <ion-item routerLink="/informacion" detail lines="none">
+      <ion-label>Nosotros</ion-label>
+      <ion-icon slot="start" name="happy"></ion-icon>
+    </ion-item>
+    <ion-item routerLink="/planes" detail lines="none">
+      <ion-label>Legal</ion-label>
+      <ion-icon slot="start" name="briefcase"></ion-icon>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

@@ -19,7 +19,9 @@ const routes: Routes = [
   { path: 'configuracion', loadChildren: './pages/configuracion/configuracion.module#ConfiguracionPageModule' },
   { path: 'soporte-tecnico', loadChildren: './pages/soporte-tecnico/soporte-tecnico.module#SoporteTecnicoPageModule' },
   { path: 'bienvenido', loadChildren: './pages/bienvenido/bienvenido.module#BienvenidoPageModule' },
-  { path: 'registro-direccion', loadChildren: './pages/registro-direccion/registro-direccion.module#RegistroDireccionPageModule' },
+  { path: 'registro-direccion', loadChildren: './pages/registro-direccion/registro-direccion.module#RegistroDireccionPageModule' },  { path: 'informacion', loadChildren: './pages/informacion/informacion.module#InformacionPageModule' },
+  { path: 'planes', loadChildren: './pages/planes/planes.module#PlanesPageModule' },
+
 
   // { path: '**', redirectTo: 'login'},
   

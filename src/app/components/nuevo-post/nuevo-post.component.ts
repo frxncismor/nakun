@@ -5,6 +5,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-nuevo-post',
   templateUrl: './nuevo-post.component.html',
