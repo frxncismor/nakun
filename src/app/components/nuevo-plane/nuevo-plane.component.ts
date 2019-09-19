@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { PlaneService } from '../../services/plane.service';
 
 @Component({
   selector: 'app-nuevo-plane',
@@ -12,7 +13,8 @@ export class NuevoPlaneComponent implements OnInit {
     mensaje: ''
   };
 
-  constructor( private modalCtrl: ModalController) { }
+  constructor( private modalCtrl: ModalController,
+               private planeService: PlaneService) { }
 
   ngOnInit() {}
 
@@ -23,6 +25,7 @@ export class NuevoPlaneComponent implements OnInit {
   publicar() {
     console.log('publicar');
     console.log(this.plane);
+    this.planeService.setNewPlane(this.plane.mensaje);
     this.modalCtrl.dismiss();
   }
 

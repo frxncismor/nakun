@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Notificaciones } from '../../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { ServiceService } from '../../services/service.service';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, ToastController } from '@ionic/angular';
 import { FirebaseApp } from '@angular/fire';
 import { AuthService } from '../../services/auth.service';
 
@@ -19,7 +19,8 @@ export class NotificacionesPage implements OnInit {
   notificaciones: any [] = [];
   constructor(private dataService: ServiceService, private actionSheetCtrl: ActionSheetController,
               public fb: FirebaseApp,
-              public auth: AuthService) { }
+              public auth: AuthService,
+              private toastController: ToastController) { }
 
   ngOnInit() {
     this.dataService.getNotifications().subscribe( notificaciones => {
@@ -49,6 +50,7 @@ export class NotificacionesPage implements OnInit {
 
           if (index > -1) {
             this.notificaciones.splice(index, 1);
+            this.presentToast();
             }
         }
       }]
@@ -73,6 +75,18 @@ export class NotificacionesPage implements OnInit {
       console.log(US);
       this.US = US;
     });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      color: 'dark',
+      duration: 2000,
+      message: 'Se ha eliminado una notificación',
+      showCloseButton: true
+    }).then( toast => {
+      toast.present();
+    });
+    
   }
 
 }

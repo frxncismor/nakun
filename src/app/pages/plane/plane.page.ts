@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { NuevoPlaneComponent } from '../../components/nuevo-plane/nuevo-plane.component';
 import { FirebaseApp } from '@angular/fire';
 import { AuthService } from '../../services/auth.service';
+import { PlaneService } from '../../services/plane.service';
 
 @Component({
   selector: 'app-plane',
@@ -13,38 +14,26 @@ export class PlanePage implements OnInit {
   US: any = [];
   userId: any;
   ocultar = '';
+  planes: any = [];
 
-  slides: { img: string, desc: string }[] = [
+  slides: { desc: string }[] = [
     {
-      img: '/assets/user-6.svg',
-      desc: 'En la vida hay tacos'
-    },
-    {
-      img: '/assets/user-6.svg',
-      desc: 'En la vida hay morritas góticas asfdfadgdagadgfdgadf'
-    },
-    {
-      img: '/assets/user-6.svg',
-      desc: 'Mensaje motivacional'
-    },
-    {
-      img: '/assets/user-6.svg',
-      desc: 'Mensaje motivacional'
-    },
-    {
-      img: '/assets/user-6.svg',
-      desc: 'Mensaje motivacional'
-    },
-    {
-      img: '/assets/user-6.svg',
-      desc: 'Mensaje motivacional'
+      desc: ''
     }
   ];
 
-  constructor( private modalCtrl: ModalController, private fb: FirebaseApp, private auth: AuthService) { }
+  constructor( private modalCtrl: ModalController,
+               private fb: FirebaseApp,
+               private auth: AuthService,
+               private planeService: PlaneService) { }
 
   ngOnInit() {
     this.CurrentUser();
+
+    this.planeService.getPlane().subscribe( resp => {
+      console.log(resp);
+      this.planes = resp;
+    });
   }
 
   async nuevoPlane() {
@@ -53,9 +42,9 @@ export class PlanePage implements OnInit {
     componentProps: { value: 123 },
     cssClass: 'newPlane'
     });
-  
+
     await modal.present();
-  
+
   }
 
   CurrentUser() {
@@ -74,5 +63,7 @@ export class PlanePage implements OnInit {
       this.US = US;
     });
   }
+
+
 
 }

@@ -6,15 +6,15 @@ import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 export interface noticia {
-  id : String,
-  img : String,
-  ulr : string,
-  categoria : string,
-  color : string,
-  icono : string,
-  nombre : String,
-  titulo : String ,
-  descripcion : String
+  id: string;
+  img: string;
+  ulr: string;
+  categoria: string;
+  color: string;
+  icono: string;
+  nombre: string;
+  titulo: string ;
+  descripcion: string;
 }
 
 @Injectable({
@@ -23,20 +23,20 @@ export interface noticia {
 export class NoticiasService {
 
 
-  constructor(private dbnoticias : AngularFirestore, private storage : AngularFireStorage) { }
+  constructor(private dbnoticias: AngularFirestore, private storage: AngularFireStorage) { }
 
-  uploadPercent : Observable<number>;
-  urlImage : Observable<string>;
-  cosa : string;
+  uploadPercent: Observable<number>;
+  urlImage: Observable<string>;
+  cosa: string;
 
-  getNoticias(){
+  getNoticias() {
     return this.dbnoticias.collection('Noticias').snapshotChanges().pipe(map(noticias => {
       return noticias.map( a => {
         const data = a.payload.doc.data() as noticia;
         data.id = a .payload.doc.id;
         return data;
-      })
-    }))
+      });
+    }));
   }
 /*
   setImgPost(file : string, filePath : string)
@@ -47,9 +47,8 @@ export class NoticiasService {
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
   }*/
 
-  setNewPost(titulo : String, descripcion : String, nombre : string,
-              url : string, img : string, categoria : string, color : string, icono : string)
-  {
+  setNewPost(titulo: string, descripcion: string, nombre: string,
+             url: string, img: string, categoria: string, color: string, icono: string) {
     const NID = Math.random().toString(36).substring(2);
     this.dbnoticias.collection('Noticias').doc(NID).set({
       titulo,
@@ -60,7 +59,7 @@ export class NoticiasService {
       categoria,
       color,
       icono
-    })
+    });
   }
 
 }
