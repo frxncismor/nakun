@@ -3,6 +3,7 @@ import { Article } from '../../interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { NoticiasService } from '../../services/noticias.service';
+import { ToastController } from '@ionic/angular';
 
 
 
@@ -19,7 +20,9 @@ export class NoticiaComponent implements OnInit {
 
  // public noticiasReg: any = [];
 
-  constructor(private iab: InAppBrowser, public noticiasService: NoticiasService) { }
+  constructor(private iab: InAppBrowser,
+              public noticiasService: NoticiasService,
+              private toastController: ToastController ) { }
 
   ngOnInit() {
   }
@@ -38,6 +41,19 @@ export class NoticiaComponent implements OnInit {
 
     if (index > -1) {
       this.destacados.splice(index, 1);
+      this.presentToast();
     }
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      color: 'dark',
+      duration: 2000,
+      message: 'Se ha eliminado un post',
+      showCloseButton: true
+    }).then( toast => {
+      toast.present();
+    });
+    
   }
 }

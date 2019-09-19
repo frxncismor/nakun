@@ -12,11 +12,11 @@
 
   <ion-slides class="slide-full" mode="ios">
 
-    <ion-slide *ngFor="let slide of slides">
+    <ion-slide *ngFor="let plane of planes" >
       <ion-card mode="ios">
-        <img [src]="slide.img" alt="" class="slide-image" />
+        <img src="/assets/user-6.svg" alt="" class="slide-image" />
         <ion-card-content>
-          {{ slide.desc }}
+          {{ plane.Mensaje }}
         </ion-card-content>
       </ion-card>
     </ion-slide>

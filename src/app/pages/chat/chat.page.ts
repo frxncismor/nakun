@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalController, IonList } from '@ionic/angular';
+import { ModalController, IonList, ToastController } from '@ionic/angular';
 import { ChatComponent } from '../../components/chat/chat.component';
 import { ServiceService } from '../../services/service.service';
 import { Contacto } from '../../interfaces/interfaces';
@@ -28,7 +28,8 @@ export class ChatPage implements OnInit {
 
   constructor( private modalCtrl: ModalController, private dataService: ServiceService,
                public fb: FirebaseApp,
-               public auth: AuthService) { }
+               public auth: AuthService,
+               private toastController: ToastController) { }
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -77,6 +78,7 @@ export class ChatPage implements OnInit {
 
     if (index > -1) {
       this.contactos.splice(index, 1);
+      this.presentToast();
       }
     // this.lista.closeSlidingItems();
   }
@@ -90,4 +92,15 @@ export class ChatPage implements OnInit {
     this.textoBuscar = event.detail.value;
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      color: 'dark',
+      duration: 2000,
+      message: 'Se ha eliminado una conversación',
+      showCloseButton: true
+    }).then( toast => {
+      toast.present();
+    });
+    
+  }
 }
