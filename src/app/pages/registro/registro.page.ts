@@ -89,7 +89,11 @@ async completarDatos() {
       this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci).then( auth => {
       this.router.navigate(['/registro-direccion']);
       console.log(this.registro);
-    }).catch(err => console.log(err));
+    }).catch(function(err){
+      var errorcode = err.code;
+      var errormessage = err.message;
+      console.log(errorcode);
+    });
   }
 
 

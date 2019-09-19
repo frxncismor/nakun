@@ -21,7 +21,7 @@ import { AngularFireStorageModule} from '@angular/fire/storage';
 
 import { FormsModule } from '@angular/forms';
 
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+//import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 
 
@@ -49,7 +49,6 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
     InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {}},
-    ImagePicker
   ],
   bootstrap: [AppComponent]
 })

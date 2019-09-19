@@ -34,6 +34,10 @@ export class RegistroDireccionPage implements OnInit {
     // this.onSubmitRegister();
   }
 
+  RegistrarDireccion(){
+    this.auth.setUserDireccion(this.registro.direccion, this.registro.colonia, this.registro.ciudad, this.registro.estado, this.registro.pais);
+  }
+
   // onSubmitRegister() {
   //   this.auth.register(this.registro.direccion, this.registro.colonia,
   //     this.registro.ciudad, this.registro.estado, this.registro.pais).then( auth => {

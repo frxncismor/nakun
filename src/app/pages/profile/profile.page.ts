@@ -19,6 +19,7 @@ export class ProfilePage implements OnInit {
   public infUsuarios: infUsuario;
   public usuario: any;
   fechanaci: FechaNacimiento;
+  public USDir: any = [];
 
   progreso = 0.5 * 10;
   constructor(
@@ -42,6 +43,7 @@ export class ProfilePage implements OnInit {
         this.userId = user.uid;
         console.log('bien');
         this.traerInformacion();
+        this.traerInformacionDom();
       }
     });
   }
@@ -51,9 +53,15 @@ export class ProfilePage implements OnInit {
       console.log(US);
       this.US = US;
     });
-
     // this.usuario = this.navparams.get('NAKUN');
     // console.log(this.usuario);
+  }
+
+  traerInformacionDom(){
+    this.auth.getUserInfoDireccion(this.userId).subscribe(USDir => {
+      console.log(USDir);
+      this.USDir = USDir;
+    });
   }
 
   ionViewWillEnter() {

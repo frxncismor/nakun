@@ -13,7 +13,6 @@ export interface infUsuario {
   Sexo : string
   Edad : string
   id: string;
-
 }
 
 
@@ -44,7 +43,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.AFauth.auth.createUserWithEmailAndPassword(email, password).then(res => {
         const uid = res.user.uid;
-        this.db.collection('usuarios').doc(uid).set({
+        this.db.collection('usuarios').doc(uid).collection('InfoUsuario').doc('InfoUsuario').set({
           Nombre,
           Apellido,
           Sexo,
@@ -56,11 +55,28 @@ export class AuthService {
   }
 
     getUserInfo( usuarioIdD : string){
-      return this.db.collection('usuarios').doc(usuarioIdD).valueChanges();
+      return this.db.collection('usuarios').doc(usuarioIdD).collection('InfoUsuario').doc('InfoUsuario').valueChanges();
+    }
+
+    getUserInfoDireccion( usuarioIdD : string){
+      return this.db.collection('usuarios').doc(usuarioIdD).collection('InfoDireccion').doc('InfoDireccion').valueChanges();
     }
 
     // getUserUid()
     // {
     //   return this.AFauth.auth.currentUser.uid;
     // }
+
+    setUserDireccion(Direccion: string, Colonia: string, Ciudad: string, Estado: string, Pais: string){
+      const uid = this.AFauth.auth.currentUser.uid;
+      if(uid != null){
+        this.db.collection('usuarios').doc(uid).collection('InfoDireccion').doc('InfoDireccion').set({
+          Direccion,
+          Colonia,
+          Ciudad,
+          Estado,
+          Pais,
+        });
+      }
+    }
 }
