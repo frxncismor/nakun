@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuController, IonInfiniteScroll, ModalController } from '@ionic/angular';
+import { MenuController, IonInfiniteScroll, ModalController, ToastController } from '@ionic/angular';
 import { Article } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
 import { NuevoPostComponent } from '../../components/nuevo-post/nuevo-post.component';
@@ -12,11 +12,34 @@ import { NuevoPostComponent } from '../../components/nuevo-post/nuevo-post.compo
 })
 export class BlogPage implements OnInit {
 
-  constructor( private menuCtrl: MenuController, private dataService: ServiceService, private modalCtrl: ModalController) { }
+  constructor( private menuCtrl: MenuController,
+               private dataService: ServiceService, 
+               private modalCtrl: ModalController,
+               private toastController: ToastController) { }
 
 
   @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
   destacados: Article[] = [];
+
+  cards: {autor: string, titulo: string, contenido: string, icono: string, color: string, categoria: string} [] = [
+   {
+    autor: 'Francisco',
+    titulo: 'Violencia en el trabajo',
+    contenido: 'En el trabajo se sufre de violencia',
+    icono: 'flask',
+    color: 'tertiary',
+    categoria: 'Trabajo'
+   },
+   {
+    autor: 'Angela',
+    titulo: 'Violencia en la familia',
+    contenido: 'En la familia se sufre de violencia',
+    icono: 'contacts',
+    color: 'primary',
+    categoria: 'Trabajo'
+   }
+  ];
+
   ngOnInit() {
     this.ionViewWillEnter();
   }
@@ -77,6 +100,29 @@ export class BlogPage implements OnInit {
     await modal.present();
     const { data } = await modal.onDidDismiss();
     console.log('lo que me regresa', data);
+  }
+
+  borrar(card) {
+    console.log('borrar');
+    const index = this.cards.indexOf(card);
+
+    if (index > -1) {
+      this.cards.splice(index, 1);
+      this.presentToast();
+    }
+  }
+
+  
+  async presentToast() {
+    const toast = await this.toastController.create({
+      color: 'dark',
+      duration: 2000,
+      message: 'Se ha eliminado una entrada',
+      showCloseButton: true
+    }).then( toast => {
+      toast.present();
+    });
+    
   }
 
 }

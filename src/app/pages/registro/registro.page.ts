@@ -29,14 +29,16 @@ export class RegistroPage implements OnInit {
       year: ''
     },
     sexo: '',
-    profesional: false
+    profesional: null,
+    premium: false
   };
 
   constructor(private menuCtrl: MenuController, private auth: AuthService, private router: Router, private alertCtrl: AlertController) { }
 
-  imgAvi : string;
-  imgAviGirl : string = "https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fgirl%20(1).svg?alt=media&token=634d6311-1381-4d54-b691-04ed4dd75a39";
-  imgAviBoy : string = "https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fboy.svg?alt=media&token=04d5d515-dd46-40f2-9a65-f5da077b394d";
+  imgAvi: string;
+  imgAviGirl = 'https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fgirl%20(1).svg?alt=media&token=634d6311-1381-4d54-b691-04ed4dd75a39';
+  imgAviBoy: string = 'https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fboy.svg?alt=media&token=04d5d515-dd46-40f2-9a65-f5da077b394d';
+  codigoProfesional : string ='EQXR34982';
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -74,15 +76,14 @@ async completarDatos() {
   alert.present();
 }
 
-  
+
 
   seleccionSexo(ev: any) {
     this.sexo = ev.detail.value;
     console.log(this.sexo);
-    if(this.sexo=="Hombre"){
+    if (this.sexo =='Hombre') {
       this.imgAvi = this.imgAviBoy;
-    }
-    else{
+    } else {
       this.imgAvi = this.imgAviGirl;
     }
     console.log(this.imgAvi);
@@ -94,9 +95,9 @@ async completarDatos() {
       this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci, this.imgAvi).then( auth => {
       this.router.navigate(['/registro-direccion']);
       console.log(this.registro);
-    }).catch(function(err){
-      var errorcode = err.code;
-      var errormessage = err.message;
+    }).catch(function(err) {
+      let errorcode = err.code;
+      let errormessage = err.message;
       console.log(errorcode);
     });
   }
@@ -124,15 +125,26 @@ async completarDatos() {
         },
         {
           text: 'Confirmar',
-          handler: data => {
-            console.log('Saved clicked');
-            this.profesional = true;
+          handler: (codigo) => {
+           
+            if (codigo !=='a') {
+              this.profesional = true;
+              this.toggleValue = true;
+              console.log( 'codigo: ', codigo, 'profesional: ', this.profesional, this.codigoProfesional);
+            } 
+            // else {
+            // this.profesional = false;
+            // this.toggleValue = false;
+            // console.log('codigo: ',codigo, 'profesional: ', this.profesional);
+            // }
           }
         }
       ]
     });
 
-// not sure why need to be "===" and not just a single "="
+    // '=' asignación
+    // '==' comparación de valor
+    // '===' comparación de valor y tipo de dato
     if (this.toggleValue === true) {
     prompt.present();
   }

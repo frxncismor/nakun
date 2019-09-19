@@ -35,16 +35,7 @@ export class NoticiaComponent implements OnInit {
     console.log('compartir');
   }
 
-  borrar() {
-    console.log('borrar');
-    const index = this.destacados.indexOf(this.noticia);
-    console.log(this.noticia);
-
-    if (index > -1) {
-      this.destacados.splice(index, 1);
-      this.presentToast();
-    }
-  }
+ 
 
   async presentToast() {
     const toast = await this.toastController.create({

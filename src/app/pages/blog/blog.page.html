@@ -15,48 +15,36 @@
   
       <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12">
 
-          <ion-card mode="ios" >
+          <ion-card mode="ios" *ngFor="let card of cards">
               <!--*ngIf="noticia.urlToImage" Comente esta linea por que me daba problema--> 
               
             <ion-img src="/assets/psicologo.jpg"  (click)="abrirNoticia()" ></ion-img>
             <ion-card-header mode="ios">
-              <ion-card-subtitle>Creado por mi</ion-card-subtitle>
-              <ion-card-title (click)="abrirNoticia()">Violencia en casa</ion-card-title>
+              <ion-card-subtitle>{{card.autor}}</ion-card-subtitle>
+              <ion-card-title (click)="abrirNoticia()">{{card.titulo}}</ion-card-title>
             </ion-card-header>
             
             <ion-card-content>
-             Los niños sufren de violencia intrafamiliar
+             {{card.contenido}}
             </ion-card-content>
             
-            <ion-item color="secondary">
-                <ion-label>Categoria</ion-label>
+            <ion-item [color]="card.color">
+                <!-- <ion-label>Categoria</ion-label> -->
                 <ion-chip color="light">
-                  <ion-icon name="contacts" color="light"></ion-icon>
-                  <ion-label>Familia</ion-label>
+                  <ion-icon [name]="card.icono" color="light"></ion-icon>
+                  <ion-label>{{card.categoria}}</ion-label>
                 </ion-chip>
-            </ion-item>
-          </ion-card>
 
-
-          <ion-card mode="ios" >
-              <!--*ngIf="noticia.urlToImage" Comente esta linea por que me daba problema--> 
-              
-            <ion-img src="/assets/psicologo.jpg"  (click)="abrirNoticia()" ></ion-img>
-            <ion-card-header mode="ios">
-              <ion-card-subtitle>Creado por mi</ion-card-subtitle>
-              <ion-card-title (click)="abrirNoticia()">Violencia en trabajo</ion-card-title>
-            </ion-card-header>
-            
-            <ion-card-content>
-             Los trabajadores sufren 
-            </ion-card-content>
-            
-            <ion-item color="tertiary">
-                <ion-label>Categoria</ion-label>
-                <ion-chip color="light">
-                  <ion-icon name="flask" color="light"></ion-icon>
-                  <ion-label>Trabajo</ion-label>
-                </ion-chip>
+                <ion-buttons slot="end">
+                  <ion-button (click)="share()" mode="ios">
+                    <ion-icon slot="icon-only" name="share"></ion-icon>
+                  </ion-button>
+                  
+                  <ion-button (click)="borrar(card)" mode="ios">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                  </ion-button>
+                    
+                </ion-buttons>
             </ion-item>
           </ion-card>
 
