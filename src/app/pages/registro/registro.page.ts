@@ -32,6 +32,7 @@ export class RegistroPage implements OnInit {
     profesional: false
   };
 
+  
   /*nombre: string;
   apellido: string;
   email: string;
@@ -39,6 +40,10 @@ export class RegistroPage implements OnInit {
 
 
   constructor(private menuCtrl: MenuController, private auth: AuthService, private router: Router, private alertCtrl: AlertController) { }
+
+  imgAvi : string;
+  imgAviGirl : string = "https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fgirl%20(1).svg?alt=media&token=634d6311-1381-4d54-b691-04ed4dd75a39";
+  imgAviBoy : string = "https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fboy.svg?alt=media&token=04d5d515-dd46-40f2-9a65-f5da077b394d";
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -81,12 +86,19 @@ async completarDatos() {
   seleccionSexo(ev: any) {
     this.sexo = ev.detail.value;
     console.log(this.sexo);
+    if(this.sexo=="Hombre"){
+      this.imgAvi = this.imgAviBoy;
+    }
+    else{
+      this.imgAvi = this.imgAviGirl;
+    }
+    console.log(this.imgAvi);
   }
 
 
   onSubmitRegister() {
     this.auth.register(this.registro.email, this.registro.password,
-      this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci).then( auth => {
+      this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci, this.imgAvi).then( auth => {
       this.router.navigate(['/registro-direccion']);
       console.log(this.registro);
     }).catch(function(err){
