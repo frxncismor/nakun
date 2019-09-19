@@ -4,6 +4,8 @@ import {NoticiasService} from '../../services/noticias.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { FirebaseApp } from '@angular/fire';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -12,11 +14,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./nuevo-post.component.scss'],
 })
 export class NuevoPostComponent implements OnInit {
-
+  NOMBRE: string;
   completed = false;
 
   post = {
-    nombre : 'Stan Lee',
+    nombre : 'HAY QUE CORREGIR ESTE NAME',
     titulo: '',
     descripcion: '',
     url: '',
@@ -44,27 +46,57 @@ export class NuevoPostComponent implements OnInit {
     ]
   };
 
-  constructor( private modalCtrl: ModalController,public  noticiasS: NoticiasService, private storage : AngularFireStorage) { }
-  
-  uploadPercent : Observable<number>;
-  urlImage : Observable<string>;
+  US: any = [];
+  userId: any;
 
-  N2file : any;
-  N2filepAth : any;
 
-  imgUrlpost : string;
+  constructor( private modalCtrl: ModalController,
+               public  noticiasS: NoticiasService,
+               private storage: AngularFireStorage,
+               private fb: FirebaseApp,
+               private auth: AuthService
+               ) { }
 
-  IconoNot :string;
-  colNot : string;
-  catNot : string;
+  uploadPercent: Observable<number>;
+  urlImage: Observable<string>;
 
-  ngOnInit() {}
+  N2file: any;
+  N2filepAth: any;
 
-  onSelectImg(e){
-    console.log('subir',e.target.files[0]);
+  imgUrlpost: string;
+
+  IconoNot: string;
+  colNot: string;
+  catNot: string;
+
+  ngOnInit() {
+    this.CurrentUser();
+  }
+
+  CurrentUser() {
+    this.fb.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.userId = user.uid;
+        console.log('bien');
+        this.traerInformacion();
+      }
+    });
+  }
+
+  traerInformacion() {
+    this.auth.getUserInfo(this.userId).subscribe(US => {
+      console.log(US);
+      this.US = US;
+      this.NOMBRE = this.US.Nombre + ' ' + this.US.Apellido;
+      console.log(this.NOMBRE);
+    });
+  }
+
+  onSelectImg(e) {
+    console.log('subir', e.target.files[0]);
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = 'NoticiasIMG/'+id;
+    const filePath = 'NoticiasIMG/' + id;
     /*this.N2file = Nfile;
     this.N2filepAth = NfilePath;
 
@@ -73,28 +105,30 @@ export class NuevoPostComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
     this.uploadPercent = task.percentageChanges();
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
-    
-    console.log(this.imgUrlpost)
+
+    console.log(this.imgUrlpost);
   }
 
-  closeChat() {
+    closeChat() {
     this.modalCtrl.dismiss();
   }
 
-  onClick( check ) {
+    onClick( check ) {
     this.catNot = check.name;
     this.colNot = check.color;
     this.IconoNot = check.icon;
     console.log(this.catNot);
     console.log(this.colNot);
     console.log(this.IconoNot);
-    
+
   }
 
-  publicar() {
+    publicar() {
     console.log(this.post);
     // tslint:disable-next-line: max-line-length
-    this.noticiasS.setNewPost(this.post.titulo,this.post.descripcion,this.post.nombre,this.post.url, this.imgUrlpost, this.catNot, this.colNot, this.IconoNot);
+    this.noticiasS.setNewPost(this.post.titulo, this.post.descripcion, this.post.nombre, this.post.url, this.imgUrlpost, this.catNot, this.colNot, this.IconoNot);
     this.modalCtrl.dismiss();
   }
+
+ 
 }
