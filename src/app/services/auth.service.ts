@@ -12,6 +12,8 @@ export interface infUsuario {
   Apellido : string
   Sexo : string
   Edad : string
+  id: string;
+
 }
 
 
@@ -57,8 +59,8 @@ export class AuthService {
       return this.db.collection('usuarios').doc(usuarioIdD).valueChanges();
     }
 
-    getUserUid()
-    {
-      return this.AFauth.auth.currentUser.uid;
-    }
+    // getUserUid()
+    // {
+    //   return this.AFauth.auth.currentUser.uid;
+    // }
 }

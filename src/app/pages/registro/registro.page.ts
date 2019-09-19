@@ -53,7 +53,7 @@ export class RegistroPage implements OnInit {
     this.fechaNaci = new Date(event.detail.value);
     this.registro.fechaNaci.day = this.fechaNaci.getDate().toString();
     this.registro.fechaNaci.month = this.fechaNaci.getMonth().toString();
-     this.registro.fechaNaci.year = this.fechaNaci.getFullYear().toString();
+    this.registro.fechaNaci.year = this.fechaNaci.getFullYear().toString();
   }
 
   Registrar() {
@@ -87,9 +87,9 @@ async completarDatos() {
   onSubmitRegister() {
     this.auth.register(this.registro.email, this.registro.password,
       this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci).then( auth => {
-      this.router.navigate(['/bienvenido']);
+      this.router.navigate(['/registro-direccion']);
       console.log(this.registro);
-    }).catch(err => console.log(err))
+    }).catch(err => console.log(err));
   }
 
 

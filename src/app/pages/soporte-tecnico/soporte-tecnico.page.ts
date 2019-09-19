@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-soporte-tecnico',
@@ -8,7 +9,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class SoporteTecnicoPage implements OnInit {
 
-  constructor(private menuCtrl: MenuController) { }
+  // url: 'm.me/324037488532225';
+  constructor(private menuCtrl: MenuController, private iab: InAppBrowser) { }
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -17,5 +19,9 @@ export class SoporteTecnicoPage implements OnInit {
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
+
+  // abrirBot() {
+  //   const browser = this.iab.create('m.me/324037488532225');
+  // }
 
 }

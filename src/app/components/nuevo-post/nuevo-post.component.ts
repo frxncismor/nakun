@@ -5,6 +5,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-nuevo-post',
   templateUrl: './nuevo-post.component.html',
@@ -92,6 +93,7 @@ export class NuevoPostComponent implements OnInit {
 
   publicar() {
     console.log(this.post);
+    // tslint:disable-next-line: max-line-length
     this.noticiasS.setNewPost(this.post.titulo,this.post.descripcion,this.post.nombre,this.post.url, this.imgUrlpost, this.catNot, this.colNot, this.IconoNot);
     this.modalCtrl.dismiss();
   }
