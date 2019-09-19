@@ -54,4 +54,9 @@ export class NoticiasService {
     });
   }
 
+  //Ejemplo de como podria borrar un post
+  deletepost(){
+    this.dbnoticias.collection('Noticias').doc().delete();
+  }
+
 }

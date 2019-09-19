@@ -32,13 +32,6 @@ export class RegistroPage implements OnInit {
     profesional: false
   };
 
-  
-  /*nombre: string;
-  apellido: string;
-  email: string;
-  password: string;*/
-
-
   constructor(private menuCtrl: MenuController, private auth: AuthService, private router: Router, private alertCtrl: AlertController) { }
 
   imgAvi : string;
