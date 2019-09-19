@@ -3,6 +3,8 @@ import { Notificaciones } from '../../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { ServiceService } from '../../services/service.service';
 import { ActionSheetController } from '@ionic/angular';
+import { FirebaseApp } from '@angular/fire';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-notificaciones',
@@ -11,14 +13,21 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class NotificacionesPage implements OnInit {
 
+  US: any = [];
+  userId: any;
+
   notificaciones: any [] = [];
-  constructor(private dataService: ServiceService, private actionSheetCtrl: ActionSheetController) { }
+  constructor(private dataService: ServiceService, private actionSheetCtrl: ActionSheetController,
+              public fb: FirebaseApp,
+              public auth: AuthService) { }
 
   ngOnInit() {
     this.dataService.getNotifications().subscribe( notificaciones => {
       console.log(notificaciones);
       this.notificaciones = notificaciones;
     });
+
+    this.CurrentUser();
   }
 
 
@@ -29,7 +38,7 @@ export class NotificacionesPage implements OnInit {
    async Opciones(notificacion) {
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Opciones',
-      backdropDismiss: true, //no se cierra el action sheet tocando en otra parte de la pantalla
+      backdropDismiss: true, // no se cierra el action sheet tocando en otra parte de la pantalla
       buttons: [{
         text: 'Delete',
         role: 'destructive',
@@ -46,7 +55,24 @@ export class NotificacionesPage implements OnInit {
     });
 
     await actionSheet.present();
-  
+
   }
-  
+
+  CurrentUser() {
+    this.fb.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.userId = user.uid;
+        console.log('bien');
+        this.traerInformacion();
+      }
+    });
+  }
+
+  traerInformacion() {
+    this.auth.getUserInfo(this.userId).subscribe(US => {
+      console.log(US);
+      this.US = US;
+    });
+  }
+
 }

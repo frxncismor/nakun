@@ -1,36 +1,60 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, ModalController } from '@ionic/angular';
+import { MenuController, ModalController, NavParams } from '@ionic/angular';
 import { EditarDescripcionComponent } from '../../components/editar-descripcion/editar-descripcion.component';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {AuthService, infUsuario} from '../../services/auth.service';
-
+import { AuthService, infUsuario } from '../../services/auth.service';
+// import * as Firebase from 'firebase';
+import { FirebaseAuth, FirebaseApp } from '@angular/fire';
+import { FechaNacimiento } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  styleUrls: ['./profile.page.scss']
 })
 export class ProfilePage implements OnInit {
-
-  public US : any;
+  public US: any = [];
   public UsAll = [];
-
-  public infUsuarios : infUsuario; 
+  public userId: any;
+  public infUsuarios: infUsuario;
+  public usuario: any;
+  fechanaci: FechaNacimiento;
 
   progreso = 0.5 * 10;
-  constructor(private auth: AuthService,private menuCtrl: MenuController, private modalCtrl: ModalController,
-    private AnguFire : AngularFirestore) {
-
-     }
+  constructor(
+    private auth: AuthService,
+    private menuCtrl: MenuController,
+    private modalCtrl: ModalController,
+    // private AnguFire: AngularFirestore,
+    // private fbAuth: FirebaseAuth,
+    // private navparams: NavParams,
+    private fb: FirebaseApp
+  ) {}
 
   ngOnInit() {
+    this.CurrentUser();
     this.ionViewWillEnter();
-    this.auth.getUserInfo(this.auth.getUserUid()).subscribe(US=> {
-      console.log(US);
-      this.US = US;
-    })
   }
 
+  CurrentUser() {
+    this.fb.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.userId = user.uid;
+        console.log('bien');
+        this.traerInformacion();
+      }
+    });
+  }
+
+  traerInformacion() {
+    this.auth.getUserInfo(this.userId).subscribe(US => {
+      console.log(US);
+      this.US = US;
+    });
+
+    // this.usuario = this.navparams.get('NAKUN');
+    // console.log(this.usuario);
+  }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
@@ -94,8 +118,4 @@ export class ProfilePage implements OnInit {
   cambiarFoto() {
     console.log('Cambiar foto');
   }
-
-
-
-
 }

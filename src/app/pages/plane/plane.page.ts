@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NuevoPlaneComponent } from '../../components/nuevo-plane/nuevo-plane.component';
+import { FirebaseApp } from '@angular/fire';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-plane',
@@ -8,7 +10,8 @@ import { NuevoPlaneComponent } from '../../components/nuevo-plane/nuevo-plane.co
   styleUrls: ['./plane.page.scss'],
 })
 export class PlanePage implements OnInit {
-
+  US: any = [];
+  userId: any;
   ocultar = '';
 
   slides: { img: string, desc: string }[] = [
@@ -38,9 +41,10 @@ export class PlanePage implements OnInit {
     }
   ];
 
-  constructor( private modalCtrl: ModalController) { }
+  constructor( private modalCtrl: ModalController, private fb: FirebaseApp, private auth: AuthService) { }
 
   ngOnInit() {
+    this.CurrentUser();
   }
 
   async nuevoPlane() {
@@ -52,6 +56,23 @@ export class PlanePage implements OnInit {
   
     await modal.present();
   
+  }
+
+  CurrentUser() {
+    this.fb.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.userId = user.uid;
+        console.log('bien');
+        this.traerInformacion();
+      }
+    });
+  }
+
+  traerInformacion() {
+    this.auth.getUserInfo(this.userId).subscribe(US => {
+      console.log(US);
+      this.US = US;
+    });
   }
 
 }

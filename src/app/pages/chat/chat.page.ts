@@ -3,6 +3,8 @@ import { ModalController, IonList } from '@ionic/angular';
 import { ChatComponent } from '../../components/chat/chat.component';
 import { ServiceService } from '../../services/service.service';
 import { Contacto } from '../../interfaces/interfaces';
+import { FirebaseApp } from '@angular/fire';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -12,19 +14,25 @@ import { Contacto } from '../../interfaces/interfaces';
 })
 export class ChatPage implements OnInit {
 
+  US: any = [];
+  userId: any;
+
   @ViewChild('lista', {static: false}) lista: IonList;
 
 
   textoBuscar = '';
   contactos: any [] = [];
 
-  currentUser = "Stan Lee";
+  currentUser = 'Stan Lee';
   newMsg = '';
 
-  constructor( private modalCtrl: ModalController, private dataService: ServiceService) { }
+  constructor( private modalCtrl: ModalController, private dataService: ServiceService,
+               public fb: FirebaseApp,
+               public auth: AuthService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.ionViewWillEnter();
+    this.CurrentUser();
   }
 
   ionViewWillEnter() {
@@ -36,6 +44,22 @@ export class ChatPage implements OnInit {
 
   }
 
+  CurrentUser() {
+    this.fb.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.userId = user.uid;
+        console.log('bien');
+        this.traerInformacion();
+      }
+    });
+  }
+
+  traerInformacion() {
+    this.auth.getUserInfo(this.userId).subscribe(US => {
+      console.log(US);
+      this.US = US;
+    });
+  }
 
   abrirChat(Contacto) {
 
@@ -65,5 +89,5 @@ export class ChatPage implements OnInit {
   buscar(event) {
     this.textoBuscar = event.detail.value;
   }
-  
+
 }

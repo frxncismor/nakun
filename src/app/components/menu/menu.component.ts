@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Componente } from '../../interfaces/interfaces';
+import { Componente, Usuario } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { AuthService } from "../../services/auth.service";
+import { AuthService } from '../../services/auth.service';
+import { FirebaseApp } from '@angular/fire';
 
 @Component({
   selector: 'app-menu',
@@ -13,18 +14,46 @@ import { AuthService } from "../../services/auth.service";
 })
 export class MenuComponent implements OnInit {
 
+  @Input() US: any = [];
+  @Input() data: any = [];
 
+  userId: any;
   componentes: Observable<Componente[]>;
-  constructor( private dataService: ServiceService, private router: Router, public alertCtrl: AlertController,
-    public authservice : AuthService) { }
+  usuario: Observable<any>;
+
+  constructor( private dataService: ServiceService,
+               private router: Router,
+               public alertCtrl: AlertController,
+               public authservice: AuthService,
+               private fb: FirebaseApp,
+               private auth: AuthService
+               ) { }
 
   ngOnInit() {
+    this.CurrentUser();
     this.componentes = this.dataService.getMenuOptions();
-
   }
 
+  
   onClick() {
     this.router.navigateByUrl('/profile');
+  }
+
+  CurrentUser() {
+    this.fb.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.userId = user.uid;
+        console.log('bien');
+        this.traerInformacion();
+      }
+    });
+  }
+
+  traerInformacion() {
+    this.auth.getUserInfo(this.userId).subscribe(US => {
+      console.log(US);
+      this.US = US;
+    });
   }
 
   async reportarBug() {
@@ -76,7 +105,6 @@ export class MenuComponent implements OnInit {
             text: 'Si',
             handler: (blah) => {
               this.authservice.logout();
-              ;
             }
           }
       ]
@@ -85,7 +113,7 @@ export class MenuComponent implements OnInit {
     await alert.present();
   }
 
- 
+
 
   /*onLogout()
   {

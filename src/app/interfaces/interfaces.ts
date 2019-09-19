@@ -91,3 +91,9 @@ export interface Usuario {
   password: string;
   direccion: Address;
 }
+
+export interface FechaNacimiento {
+  day: string;
+  month: string;
+  yea: string;
+}
