@@ -38,14 +38,6 @@ export class NoticiasService {
       });
     }));
   }
-/*
-  setImgPost(file : string, filePath : string)
-  {
-    const ref = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    this.uploadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
-  }*/
 
   setNewPost(titulo: string, descripcion: string, nombre: string,
              url: string, img: string, categoria: string, color: string, icono: string) {

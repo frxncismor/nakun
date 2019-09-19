@@ -38,6 +38,7 @@ export class NoticiaComponent implements OnInit {
   borrar() {
     console.log('borrar');
     const index = this.destacados.indexOf(this.noticia);
+    console.log(this.noticia);
 
     if (index > -1) {
       this.destacados.splice(index, 1);
