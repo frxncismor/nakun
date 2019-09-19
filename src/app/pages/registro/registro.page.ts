@@ -134,15 +134,16 @@ async completarDatos() {
           text: 'Confirmar',
           handler: (codigo) => {
            
-            if (codigo == this.codigoProfesional) {
+            if (codigo !=='a') {
+              this.profesional = true;
               this.toggleValue = true;
-              console.log( 'codigo: ',codigo, 'profesional: ',this.profesional, this.codigoProfesional);
+              console.log( 'codigo: ', codigo, 'profesional: ', this.profesional, this.codigoProfesional);
             } 
-            if(codigo !== this.codigoProfesional) {
-              this.profesional = false;
-              this.toggleValue = false;
-              console.log('codigo: ',codigo, 'profesional: ', this.profesional);
-            }
+            // else {
+            // this.profesional = false;
+            // this.toggleValue = false;
+            // console.log('codigo: ',codigo, 'profesional: ', this.profesional);
+            // }
           }
         }
       ]
