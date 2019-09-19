@@ -15,9 +15,10 @@ export class NoticiaComponent implements OnInit {
 
   @Input() noticia: any = [];
   @Input() indice: number;
+  @Input() destacados: any = [];
 
  // public noticiasReg: any = [];
-  
+
   constructor(private iab: InAppBrowser, public noticiasService: NoticiasService) { }
 
   ngOnInit() {
@@ -25,5 +26,18 @@ export class NoticiaComponent implements OnInit {
 
   abrirNoticia() {
     const browser = this.iab.create(this.noticia.url, '_system');
+  }
+
+  share() {
+    console.log('compartir');
+  }
+
+  borrar() {
+    console.log('borrar');
+    const index = this.destacados.indexOf(this.noticia);
+
+    if (index > -1) {
+      this.destacados.splice(index, 1);
+    }
   }
 }
