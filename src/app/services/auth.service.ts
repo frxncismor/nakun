@@ -63,11 +63,6 @@ export class AuthService {
       return this.db.collection('usuarios').doc(usuarioIdD).collection('InfoDireccion').doc('InfoDireccion').valueChanges();
     }
 
-    // getUserUid()
-    // {
-    //   return this.AFauth.auth.currentUser.uid;
-    // }
-
     setUserDireccion(Direccion: string, Colonia: string, Ciudad: string, Estado: string, Pais: string){
       const uid = this.AFauth.auth.currentUser.uid;
       if(uid != null){

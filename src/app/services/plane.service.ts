@@ -13,8 +13,8 @@ export class PlaneService {
   constructor( private db: AngularFirestore, private AFauth: AngularFireAuth) { }
 
   setNewPlane(Mensaje: string) {
-    const uid = this.AFauth.auth.currentUser.uid;
-    this.db.collection('Plane').doc(uid).set({
+    const idplane = Math.random().toString(36).substring(2);
+    this.db.collection('Plane').doc(idplane).set({
       Mensaje
     });
   }
