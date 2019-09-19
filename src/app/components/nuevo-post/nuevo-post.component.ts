@@ -18,7 +18,7 @@ export class NuevoPostComponent implements OnInit {
   completed = false;
 
   post = {
-    nombre : 'HAY QUE CORREGIR ESTE NAME',
+    nombre : '',
     titulo: '',
     descripcion: '',
     url: '',
@@ -126,7 +126,7 @@ export class NuevoPostComponent implements OnInit {
     publicar() {
     console.log(this.post);
     // tslint:disable-next-line: max-line-length
-    this.noticiasS.setNewPost(this.post.titulo, this.post.descripcion, this.post.nombre, this.post.url, this.imgUrlpost, this.catNot, this.colNot, this.IconoNot);
+    this.noticiasS.setNewPost(this.post.titulo, this.post.descripcion, this.NOMBRE, this.post.url, this.imgUrlpost, this.catNot, this.colNot, this.IconoNot);
     this.modalCtrl.dismiss();
   }
 
