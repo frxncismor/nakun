@@ -1,0 +1,47 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title text-center class="bienvenido">¡Bienvenido!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h5 style="text-align: center;">
+    Realiza el test para darte la mejor atención
+  </h5>
+
+  <form action="">
+    <ion-list *ngFor="let pregunta of preguntas; let i = index;" >
+        <ion-list-header>{{ i + 1 }}. {{pregunta.pregunta}}</ion-list-header>
+      <ion-radio-group name="auto" required>
+    
+        <ion-item>
+          <p>{{pregunta.respuesta1}}</p>
+          <ion-radio value="1" color="primary"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <!-- <ion-label>{{pregunta.respuesta2}}</ion-label> -->
+          <p>{{pregunta.respuesta2}}</p>
+          <ion-radio value="2" color="tertiary"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <p>{{pregunta.respuesta3}}</p>
+          <ion-radio value="3" color="danger"></ion-radio>
+        </ion-item>
+        
+      </ion-radio-group>
+    </ion-list>
+    <ion-button (click)="submit()" expand="block" color="secondary">
+        Siguiente
+      </ion-button>
+    </form>
+</ion-content>
+
+<!-- <ion-footer>
+  <ion-toolbar>
+      <ion-button (click)="submit()" expand="block" color="secondary">
+        Siguiente
+      </ion-button>
+  </ion-toolbar>
+</ion-footer> -->

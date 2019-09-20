@@ -130,5 +130,13 @@ export class NuevoPostComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  galeria() {
+    console.log('Galeria');
+  }
+
+  camara() {
+    console.log('Camara');
+  }
+
  
 }

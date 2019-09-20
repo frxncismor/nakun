@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'bienvenido', loadChildren: './pages/bienvenido/bienvenido.module#BienvenidoPageModule' },
   { path: 'registro-direccion', loadChildren: './pages/registro-direccion/registro-direccion.module#RegistroDireccionPageModule' },  { path: 'informacion', loadChildren: './pages/informacion/informacion.module#InformacionPageModule' },
   { path: 'planes', loadChildren: './pages/planes/planes.module#PlanesPageModule' },
+  { path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
 
 
   // { path: '**', redirectTo: 'login'},

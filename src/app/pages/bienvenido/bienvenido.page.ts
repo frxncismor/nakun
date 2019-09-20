@@ -37,7 +37,7 @@ export class BienvenidoPage implements OnInit {
   }
 
   onComenzar(){
-    this.router.navigate(['/tabs/home']);
+    this.router.navigate(['/test']);
   }
 
 

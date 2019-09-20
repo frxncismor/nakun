@@ -8,7 +8,7 @@
     <ion-title text-capitalize >Crear entrada</ion-title>
 
     <ion-buttons slot="end">
-       <ion-button (click)="publicar()" type="submit" [disabled]="formulario.invalid">
+       <ion-button (click)="publicar()" type="submit" [disabled]="formulario.invalid" color="secondary">
           PUBLICAR
        </ion-button>
     </ion-buttons>
@@ -40,14 +40,6 @@
       <ion-label position="floating">Titulo</ion-label>
       <ion-input type="text" [(ngModel)]="post.titulo" name="titulo" required></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Imagen</ion-label>
-      <br>
-      <ion-input type="file" accept=".png, .jpg" (change)="onSelectImg($event)" [(ngModel)]="post.imagen" name="imagen" required  ></ion-input>
-      <ion-progress-bar color="primary" [value]="uploadPercent | async"></ion-progress-bar>
-      <br>
-    </ion-item>
     
     <ion-item>
       <ion-label position="floating">Descripcion</ion-label>
@@ -60,15 +52,47 @@
       <ion-input type="text"  [(ngModel)]="post.url" name="url" required></ion-input>
     </ion-item>
 
-    
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-input name ="imgUrlpost" [(ngModel)]="imgUrlpost"  type="hidden" [value]="urlImage | async"></ion-input>
-    </ion-item>
+    </ion-item> -->
+
+ 
+      <!-- <ion-label position="floating">Imagen</ion-label> -->
+      
+
+      <!-- <br>
+      <ion-input type="file" accept=".png, .jpg" (change)="onSelectImg($event)" [(ngModel)]="post.imagen" name="imagen" required  ></ion-input>
+      <ion-progress-bar color="primary" [value]="uploadPercent | async"></ion-progress-bar>
+      <br> -->
+   
+
+
     
 
   </ion-list>
+ <ion-row>
+   <ion-list-header>
+     <ion-label>Imagen</ion-label>
+   </ion-list-header>
+   <ion-col size="6">
+     
+          <ion-button (click)="camara()" fill="outline" color="secondary" class="camara">
+            <ion-icon slot="start" name="camera"></ion-icon>
+            Camara
+          </ion-button>
 
+
+   </ion-col>
+   <ion-col size="6">
+      <ion-button (click)="galeria()" fill="outline"  color="secondary" class="galeria">
+          <ion-icon slot="start" name="images"></ion-icon>
+          Galeria
+        </ion-button>
+
+
+   </ion-col>
+ </ion-row>
   <ion-list>
       <ion-list-header mode="ios">
           <ion-label>Categoria</ion-label>
