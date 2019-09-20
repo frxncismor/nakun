@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import {NoticiasService} from '../../services/noticias.service';
+import { NoticiasService } from '../../services/noticias.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { FirebaseApp } from '@angular/fire';
 import { AuthService } from '../../services/auth.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
+declare var window: any;
 
 @Component({
   selector: 'app-nuevo-post',
@@ -17,45 +19,48 @@ export class NuevoPostComponent implements OnInit {
   NOMBRE: string;
   completed = false;
 
+  tempImages: string[] = [];
+
   post = {
-    nombre : '',
+    nombre: '',
     titulo: '',
     descripcion: '',
     url: '',
     imagen: '',
-    categoria :
-    [
-      {
-        name: 'Relaciones',
-        color: 'primary',
-        selected: false,
-        icon : 'heart'
-      },
-      {
-        name: 'Familia',
-        color: 'secondary',
-        selected: false,
-        icon : 'contacts'
-      },
-      {
-        name: 'Trabajo',
-        color: 'tertiary',
-        selected: false,
-        icon : 'flask'
-      }
-    ]
+    categoria:
+      [
+        {
+          name: 'Relaciones',
+          color: 'primary',
+          selected: false,
+          icon: 'heart'
+        },
+        {
+          name: 'Familia',
+          color: 'secondary',
+          selected: false,
+          icon: 'contacts'
+        },
+        {
+          name: 'Trabajo',
+          color: 'tertiary',
+          selected: false,
+          icon: 'flask'
+        }
+      ]
   };
 
   US: any = [];
   userId: any;
 
 
-  constructor( private modalCtrl: ModalController,
-               public  noticiasS: NoticiasService,
-               private storage: AngularFireStorage,
-               private fb: FirebaseApp,
-               private auth: AuthService
-               ) { }
+  constructor(private modalCtrl: ModalController,
+    public noticiasS: NoticiasService,
+    private storage: AngularFireStorage,
+    private fb: FirebaseApp,
+    private auth: AuthService,
+    private camera: Camera
+  ) { }
 
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
@@ -74,7 +79,7 @@ export class NuevoPostComponent implements OnInit {
   }
 
   CurrentUser() {
-    this.fb.auth().onAuthStateChanged( user => {
+    this.fb.auth().onAuthStateChanged(user => {
       if (user) {
         this.userId = user.uid;
         console.log('bien');
@@ -109,11 +114,11 @@ export class NuevoPostComponent implements OnInit {
     console.log(this.imgUrlpost);
   }
 
-    closeChat() {
+  closeChat() {
     this.modalCtrl.dismiss();
   }
 
-    onClick( check ) {
+  onClick(check) {
     this.catNot = check.name;
     this.colNot = check.color;
     this.IconoNot = check.icon;
@@ -123,7 +128,7 @@ export class NuevoPostComponent implements OnInit {
 
   }
 
-    publicar() {
+  publicar() {
     console.log(this.post);
     // tslint:disable-next-line: max-line-length
     this.noticiasS.setNewPost(this.post.titulo, this.post.descripcion, this.NOMBRE, this.post.url, this.imgUrlpost, this.catNot, this.colNot, this.IconoNot);
@@ -131,12 +136,49 @@ export class NuevoPostComponent implements OnInit {
   }
 
   galeria() {
+    const options: CameraOptions = {
+      quality: 60,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    };
+    this.procesarImagen(options);
     console.log('Galeria');
   }
 
   camara() {
+    const options: CameraOptions = {
+      quality: 60,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      sourceType: this.camera.PictureSourceType.CAMERA
+    };
+    this.procesarImagen(options);
+
+
     console.log('Camara');
   }
 
- 
+  procesarImagen(options: CameraOptions) {
+
+    const result = this.camera.getPicture(options)
+    const pictures = this.storage.ref('pictures/');
+    const image = 'data:image/jpeg;base64,${result}';
+    pictures.putString(image, 'data_url');
+
+    /*this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      const img = window.Ionic.WebView.convertFileSrc(imageData);
+      console.log(img);
+      this.tempImages.push(img);
+    }, (err) => {
+      // Handle error
+    });
+  }*/
+
 }

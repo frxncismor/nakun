@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { FileUploadOptions, FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+
 
 export interface noticia {
   id: string;
@@ -23,7 +25,8 @@ export interface noticia {
 export class NoticiasService {
 
 
-  constructor(private dbnoticias: AngularFirestore, private storage: AngularFireStorage) { }
+  constructor(private dbnoticias: AngularFirestore, private storage: AngularFireStorage,
+              private fileTransfer: FileTransfer) { }
 
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
@@ -57,6 +60,17 @@ export class NoticiasService {
   //Ejemplo de como podria borrar un post
   deletepost(){
     this.dbnoticias.collection('Noticias').doc().delete();
+  }
+
+  subirImagen(img: string){
+    const options: FileUploadOptions = {
+      fileKey: 'img',
+
+    };
+
+    const fileTransfer: FileTransferObject = this.fileTransfer.create();
+
+    //fileTransfer.upload(img, )
   }
 
 }

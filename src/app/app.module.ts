@@ -18,6 +18,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireStorageModule} from '@angular/fire/storage';
+import { Camera } from '@ionic-native/camera/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 
 import { FormsModule } from '@angular/forms';
 
@@ -45,6 +47,8 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     StatusBar,
+    Camera,
+    FileTransfer,
     SplashScreen,
     InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
