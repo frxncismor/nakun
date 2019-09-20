@@ -8,7 +8,7 @@
     <ion-title text-capitalize >Crear entrada</ion-title>
 
     <ion-buttons slot="end">
-       <ion-button (click)="publicar()" type="submit" [disabled]="formulario.invalid">
+       <ion-button (click)="publicar()" type="submit" [disabled]="formulario.invalid" color="secondary">
           PUBLICAR
        </ion-button>
     </ion-buttons>
@@ -72,6 +72,9 @@
 
   </ion-list>
  <ion-row>
+   <ion-list-header>
+     <ion-label>Imagen</ion-label>
+   </ion-list-header>
    <ion-col size="6">
      
           <ion-button (click)="camara()" fill="outline" color="secondary" class="camara">
