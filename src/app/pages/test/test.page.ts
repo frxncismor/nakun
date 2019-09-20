@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-test',
@@ -87,14 +88,31 @@ export class TestPage implements OnInit {
 
 
 
-  constructor( private router: Router) { }
+  constructor( private router: Router, private alertController: AlertController) { }
 
   ngOnInit() {
   }
 
   submit() {
     console.log('Gracias');
-    this.router.navigate(['/tabs/home']);
+    this.presentAlert();
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Resultado',
+      subHeader: 'Tu puntaje fue de: 17',
+      message: 'Tranquilo solo estás triste.',
+      buttons: [
+        {
+          text: 'Siguiente',
+          handler: () => {
+            this.router.navigateByUrl('/tabs/home');
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
 }
