@@ -105,6 +105,7 @@ export class BlogPage implements OnInit {
   borrar(card) {
     console.log('borrar');
     const index = this.cards.indexOf(card);
+    console.log(card);
 
     if (index > -1) {
       this.cards.splice(index, 1);

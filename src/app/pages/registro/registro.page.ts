@@ -29,7 +29,7 @@ export class RegistroPage implements OnInit {
       year: ''
     },
     sexo: '',
-    profesional: null,
+    profesional: false,
     premium: false
   };
 
@@ -39,6 +39,8 @@ export class RegistroPage implements OnInit {
   imgAviGirl = 'https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fgirl%20(1).svg?alt=media&token=634d6311-1381-4d54-b691-04ed4dd75a39';
   imgAviBoy: string = 'https://firebasestorage.googleapis.com/v0/b/nakun-firebase-bd.appspot.com/o/Avatars%2Fboy.svg?alt=media&token=04d5d515-dd46-40f2-9a65-f5da077b394d';
   codigoProfesional : string ='EQXR34982';
+  public code : any =[];
+  codup : string;
 
   ngOnInit() {
     this.ionViewWillEnter();
@@ -92,7 +94,7 @@ async completarDatos() {
 
   onSubmitRegister() {
     this.auth.register(this.registro.email, this.registro.password,
-      this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci, this.imgAvi).then( auth => {
+      this.registro.nombre, this.registro.apellido, this.registro.sexo, this.registro.fechaNaci, this.imgAvi, this.registro.profesional, this.registro.premium).then( auth => {
       this.router.navigate(['/registro-direccion']);
       console.log(this.registro);
     }).catch(function(err) {
@@ -101,8 +103,6 @@ async completarDatos() {
       console.log(errorcode);
     });
   }
-
-
 
 
  async activatePopup() {
@@ -121,22 +121,27 @@ async completarDatos() {
           handler: data => {
             console.log('Cancel clicked');
             this.toggleValue = false;
+            this.profesional = false;
+            console.log(this.profesional);
           }
         },
         {
           text: 'Confirmar',
-          handler: (codigo) => {
-           
-            if (codigo !=='a') {
+          handler: (code) => {
+            this.codup = code.codigo;
+
+            if (this.codup.toUpperCase() === this.codigoProfesional) {
               this.profesional = true;
               this.toggleValue = true;
-              console.log( 'codigo: ', codigo, 'profesional: ', this.profesional, this.codigoProfesional);
+              //console.log( 'codigo: ', code.codigo, 'profesional: ', this.profesional, this.codigoProfesional);
+              //console.log('Profesional :',this.codigoProfesional);
             } 
-            // else {
-            // this.profesional = false;
-            // this.toggleValue = false;
-            // console.log('codigo: ',codigo, 'profesional: ', this.profesional);
-            // }
+            else {
+             this.profesional = false;
+             this.toggleValue = false;
+             //console.log('codigo: ',code.codigo, 'profesional: ', this.profesional);
+             //console.log(this.codigoProfesional);
+             }
           }
         }
       ]
