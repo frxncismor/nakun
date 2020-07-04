@@ -26,3 +26,7 @@ Requisitos para correr la aplicación:
 ¿Cómo ser contribuidor? (Poder hacer git push y git pull)
 Toda la información está en este link:
 https://gist.github.com/BCasal/026e4c7f5c71418485c1
+
+Usuario de prueba:
+frxncismor@gmail.com
+1234567890
